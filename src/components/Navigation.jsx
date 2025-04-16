@@ -1,28 +1,76 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+import classes from "./Navigation.module.css";
 
 function Navigation() {
   return (
     <>
-      <header>
+      <header className={classes.header}>
         <nav>
-          <ul>
+          <ul className={classes.list}>
             <li>
-              <Link to="">Home</Link>
+              <NavLink
+                to=""
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+                end
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/reviews">Reviews</Link>
+              <NavLink
+                to="/reviews"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Reviews
+              </NavLink>
             </li>
             <li>
-              <Link to="/upgrade">Upgrade</Link>
+              <NavLink
+                to="/upgrade"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Upgrade
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin">Admin</Link>
+              <NavLink
+                to="/support"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Support
+              </NavLink>
             </li>
             <li>
-              <Link to="/support">Support</Link>
+              <div className={classes.search}>Search</div>
+            </li>
+            <li>
+              <NavLink
+                to="/admin"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Admin
+              </NavLink>
             </li>
           </ul>
         </nav>

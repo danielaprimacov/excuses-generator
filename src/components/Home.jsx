@@ -1,5 +1,11 @@
+import WelcomeBanner from "./WelcomeBanner";
+
 function Home() {
-  return <>Home Page</>;
+  return (
+    <>
+      <WelcomeBanner />
+    </>
+  );
 }
 
 export default Home;
