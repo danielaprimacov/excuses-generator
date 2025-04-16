@@ -1,15 +1,5 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Content from "./Content";
-
 function Home() {
-  return (
-    <>
-      <Navbar />
-      <Content />
-      <Footer />
-    </>
-  );
+  return <>Home Page</>;
 }
 
 export default Home;
