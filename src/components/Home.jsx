@@ -1,5 +1,15 @@
+import Categories from "./Categories";
+import LatestResults from "./LatestResults";
+import WelcomeBanner from "./WelcomeBanner";
+
 function Home() {
-  return <>Home Page</>;
+  return (
+    <>
+      <WelcomeBanner />
+      <LatestResults />
+      <Categories />
+    </>
+  );
 }
 
 export default Home;
