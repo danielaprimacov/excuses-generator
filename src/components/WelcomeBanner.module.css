@@ -1,6 +1,7 @@
 .banner {
   width: 100%;
   height: 250px;
+  margin-top: 40px;
   background-color: var(--color-gray-600);
   color: var(--color-primary-500);
 
