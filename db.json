@@ -1,0 +1,142 @@
+{
+  "categories": [
+    {
+      "categoryId": 1,
+      "categoryName": "Family",
+      "situations": [
+        {
+          "situationId": 101,
+          "situationName": "Missing Family Dinner",
+          "situationDescription": "You need a reason for skipping a family meal.",
+          "photoUrl": "https://example.com/family-dinner.jpg",
+          "excuses": [
+            {
+              "excuseId": 1,
+              "excuseDescription": "I'm feeling under the weather and don't want to risk getting anyone sick.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Empathy"]
+            },
+            {
+              "excuseId": 2,
+              "excuseDescription": "Got stuck at work dealing with a sudden issue. I’m so sorry — can we reschedule soon?",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            }
+          ]
+        },
+        {
+          "situationId": 105,
+          "situationName": "Forgot Important Birthday",
+          "situationDescription": "You forgot someone’s birthday and need an excuse.",
+          "photoUrl": "https://example.com/forgot-birthday.jpg",
+          "excuses": [
+            {
+              "excuseId": 3,
+              "excuseDescription": "I've been so caught up with work/family stuff — but I didn’t forget you’re important to me!",
+              "format": "Text",
+              "characteristics": ["Empathy", "Funny"]
+            },
+            {
+              "excuseId": 4,
+              "excuseDescription": "I wanted to be the last person to wish you a happy birthday — saving the best for last!",
+              "format": "Text",
+              "characteristics": ["Funny", "Not Suspicious"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "Relationship",
+      "situations": [
+        {
+          "situationId": 102,
+          "situationName": "Argument with Partner",
+          "situationDescription": "You need to delay or avoid a tough relationship conversation.",
+          "photoUrl": "https://example.com/relationship-argument.jpg",
+          "excuses": [
+            {
+              "excuseId": 5,
+              "excuseDescription": "I’m emotionally exhausted today and I don't want to make things worse. Can we talk tomorrow?",
+              "format": "Text",
+              "characteristics": ["Empathy", "Realistic"]
+            },
+            {
+              "excuseId": 6,
+              "excuseDescription": "I have a work emergency tonight, can we postpone our conversation?",
+              "format": "Text",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryId": 3,
+      "categoryName": "Work",
+      "situations": [
+        {
+          "situationId": 103,
+          "situationName": "Project Deadline Missed",
+          "situationDescription": "You can’t finish your work project by the deadline.",
+          "photoUrl": "https://example.com/work-deadline.jpg",
+          "excuses": [
+            {
+              "excuseId": 7,
+              "excuseDescription": "Technical blockers came up unexpectedly — I’ll need a brief extension to deliver quality work.",
+              "format": "Email",
+              "characteristics": ["Corporate", "Professional"]
+            },
+            {
+              "excuseId": 8,
+              "excuseDescription": "My laptop crashed last night and corrupted critical files. I’m working on recovery.",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Technical"]
+            }
+          ]
+        },
+        {
+          "situationId": 106,
+          "situationName": "Missed Early Morning Meeting",
+          "situationDescription": "You overslept and missed a work meeting.",
+          "photoUrl": "https://example.com/missed-meeting.jpg",
+          "excuses": [
+            {
+              "excuseId": 9,
+              "excuseDescription": "Alarm didn’t go off due to a phone update glitch — so sorry for missing the meeting!",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Technical"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryId": 4,
+      "categoryName": "Financial",
+      "situations": [
+        {
+          "situationId": 104,
+          "situationName": "Late Loan Payment",
+          "situationDescription": "You missed paying back a financial loan on time.",
+          "photoUrl": "https://example.com/late-payment.jpg",
+          "excuses": [
+            {
+              "excuseId": 10,
+              "excuseDescription": "Bank processing delays caused a problem. I’ll clear the payment within 24 hours.",
+              "format": "Email",
+              "characteristics": ["Corporate", "Not Suspicious"]
+            },
+            {
+              "excuseId": 11,
+              "excuseDescription": "Unexpected medical expenses popped up this week. I need a little more time.",
+              "format": "Email",
+              "characteristics": ["Empathy", "Financial"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
