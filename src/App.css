@@ -1,0 +1,90 @@
+/* ABOUT PAGE */
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    background-color: #ffffff;
+    color: #1c1c1e;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  .about-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+  
+  .about-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 6rem;
+    gap: 2rem;
+  }
+  
+  .about-section-reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .about-text {
+    flex: 1 1 500px;
+    min-width: 300px;
+  }
+  
+  .about-image-wrapper {
+    flex: 1 1 500px;
+    min-width: 300px;
+  }
+  
+  .about-image {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1db954;
+  }
+  
+  .about-paragraph {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .about-list-item {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-links a {
+    color: #1db954;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: 600;
+  }
+  
+  .about-links a:hover {
+    color: #1ed760;
+    text-decoration: underline;
+  }
+  
+  .about-closing {
+    font-size: 1rem;
+    margin-top: 3rem;
+    font-style: italic;
+    text-align: center;
+  }
+  
