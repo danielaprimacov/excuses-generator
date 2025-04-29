@@ -23,8 +23,9 @@
 }
 
 .learn-btn,
-.upgrade-btn {
-  width: 10rem;
+.upgrade-btn,
+.generate-btn {
+  width: 14rem;
   cursor: pointer;
   padding: 0.6rem;
   background-color: #fefae0;
@@ -38,7 +39,8 @@
 }
 
 .learn-btn:hover,
-.upgrade-btn:hover {
+.upgrade-btn:hover,
+.generate-btn:hover {
   color: var(--color-primary-500);
   transform: scale(1.1);
 }

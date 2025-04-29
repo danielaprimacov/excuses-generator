@@ -21,6 +21,9 @@ function WelcomeBanner() {
           <Link to="/upgrade" className={classes["upgrade-btn"]}>
             Upgrade
           </Link>
+          <Link to="/excuses" className={classes["generate-btn"]}>
+            Generate New Excuse
+          </Link>
         </div>
       </div>
     </>

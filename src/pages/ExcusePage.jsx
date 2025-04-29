@@ -1,5 +1,7 @@
+import ExcuseGenerator from "../components/ExcuseGenerator";
+
 function ExcusePage() {
-  return <h1>Excuse Card</h1>;
+  return <ExcuseGenerator />;
 }
 
 export default ExcusePage;
