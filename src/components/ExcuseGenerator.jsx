@@ -117,23 +117,19 @@ function ExcuseGenerator() {
 
       <form onSubmit={handleSubmit}>
         <label>
-          <strong>Describe Your Situation</strong> (e.g. "meeting", "birthday",
-          "loan")
+          <strong>Describe Your Situation</strong>
           <input
             className={classes["form-input"]}
             type="text"
             value={userSituationInput}
             onChange={(e) => setUserSituationInput(e.target.value)}
-            placeholder="Type your situation..."
+            placeholder="ex. 'meeting', 'birthday', 'loan'"
             required
           />
         </label>
 
-        <br />
-        <br />
-
         <label>
-          <strong>Tone *</strong>
+          <strong>Tone</strong>
           <select
             value={tone}
             onChange={(e) => setTone(e.target.value)}
@@ -149,11 +145,8 @@ function ExcuseGenerator() {
           </select>
         </label>
 
-        <br />
-        <br />
-
         <label>
-          <strong>Format</strong> (optional)
+          <strong>Format (optional)</strong>
           <select value={format} onChange={(e) => setFormat(e.target.value)}>
             <option value="">Any</option>
             <option value="Text">Text</option>
@@ -162,19 +155,19 @@ function ExcuseGenerator() {
           </select>
         </label>
 
-        <br />
-        <br />
-        <button className={classes.submit} type="submit">
-          Generate Excuse
-        </button>
+        <div className={classes.buttons}>
+          <button className={classes.submit} type="submit">
+            Generate Excuse
+          </button>
 
-        <button
-          className={classes.surprise}
-          type="button"
-          onClick={handleSurprise}
-        >
-          Surprise Me
-        </button>
+          <button
+            className={classes.surprise}
+            type="button"
+            onClick={handleSurprise}
+          >
+            Surprise Me
+          </button>
+        </div>
       </form>
 
       {excuse && (
@@ -191,7 +184,7 @@ function ExcuseGenerator() {
         </div>
       )}
 
-      {error && <p style={{ color: "red" }}>❌ {error}</p>}
+      {error && <p className={classes.error}>❌ {error}</p>}
     </div>
   );
 }
