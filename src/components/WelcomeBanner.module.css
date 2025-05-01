@@ -12,8 +12,11 @@
   text-align: center;
 }
 
-.banner p {
+.banner h1 {
   padding: 0 25rem;
+}
+
+.banner p {
 }
 
 .actions {

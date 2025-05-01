@@ -9,65 +9,84 @@ function ExcuseGenerator() {
   const [excuse, setExcuse] = useState(null);
   const [error, setError] = useState("");
 
-  async function getAllExcusesFromAllSituations() {
-    const res = await fetch("http://localhost:5000/categories");
-    const categories = await res.json();
+  const API_URL = "http://localhost:5000/categories";
 
-    const allExcuses = categories.flatMap((category) =>
+  // Fetch and flatten all excuses from categories → situations → excuses
+  const fetchAllExcuses = async () => {
+    const response = await fetch(API_URL);
+    const categories = await response.json();
+    return categories.flatMap((category) =>
       category.situations.flatMap((situation) =>
-        situation.excuses.map((excuse) => ({
-          ...excuse,
+        situation.excuses.map((exc) => ({
+          ...exc,
           situationName: situation.situationName,
           situationDescription: situation.situationDescription,
           categoryName: category.categoryName,
         }))
       )
     );
+  };
 
-    return allExcuses;
-  }
+  // Filter logic by tone, format, and all keywords in the situation input
+  const filterExcuses = (excuses, { situationKeyword, tone, format }) => {
+    let filtered = [...excuses];
 
-  async function generateExcuseSmart({ situationKeyword, tone, format = "" }) {
-    const allExcuses = await getAllExcusesFromAllSituations();
+    // Filter by tone
+    if (tone) {
+      filtered = filtered.filter((e) => e.characteristics.includes(tone));
+    }
 
-    let filtered = allExcuses.filter((excuse) =>
-      excuse.characteristics.includes(tone)
-    );
-
+    // Filter by format
     if (format) {
-      filtered = filtered.filter(
-        (excuse) => excuse.format.toLowerCase() === format.toLowerCase()
-      );
+      const fmt = format.toLowerCase();
+      filtered = filtered.filter((e) => e.format.toLowerCase() === fmt);
     }
 
+    // Filter by every keyword in the situation input
     if (situationKeyword) {
-      const keyword = situationKeyword.toLowerCase();
-      filtered = filtered.filter(
-        (excuse) =>
-          excuse.situationName.toLowerCase().includes(keyword) ||
-          excuse.situationDescription?.toLowerCase().includes(keyword)
-      );
+      const keywords = situationKeyword
+        .toLowerCase()
+        .split(/\s+/) // split on whitespace
+        .filter((w) => w); // remove empty strings
+
+      filtered = filtered.filter((e) => {
+        const name = e.situationName.toLowerCase();
+        const desc = (e.situationDescription || "").toLowerCase();
+
+        // each keyword must appear in either name or description
+        return keywords.every(
+          (word) => name.includes(word) || desc.includes(word)
+        );
+      });
     }
 
+    return filtered;
+  };
+
+  // Pick a random element from an array
+  const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  // Generate an excuse matching filters
+  const generateExcuseSmart = async (options) => {
+    const all = await fetchAllExcuses();
+    const filtered = filterExcuses(all, options);
     if (filtered.length === 0) {
       throw new Error("No matching excuses found for your situation.");
     }
+    return pickRandom(filtered);
+  };
 
-    const selected = filtered[Math.floor(Math.random() * filtered.length)];
+  // Generate a completely random excuse
+  const generateRandomExcuse = async () => {
+    const all = await fetchAllExcuses();
+    return pickRandom(all);
+  };
 
-    return selected;
-  }
-
-  async function generateRandomExcuse() {
-    const all = await getAllExcusesFromAllSituations();
-    return all[Math.floor(Math.random() * all.length)];
-  }
-
-  async function handleSubmit(e) {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setExcuse(null);
     setError("");
-
     try {
       const result = await generateExcuseSmart({
         situationKeyword: userSituationInput,
@@ -78,19 +97,19 @@ function ExcuseGenerator() {
     } catch (err) {
       setError(err.message);
     }
-  }
+  };
 
-  async function handleSurprise() {
+  // Handle “Surprise Me” click
+  const handleSurprise = async () => {
     setExcuse(null);
     setError("");
-
     try {
       const result = await generateRandomExcuse();
       setExcuse(result);
-    } catch (err) {
+    } catch {
       setError("Something went wrong generating a random excuse.");
     }
-  }
+  };
 
   return (
     <div className={classes["excuses-container"]}>
@@ -154,7 +173,7 @@ function ExcuseGenerator() {
           type="button"
           onClick={handleSurprise}
         >
-          🎲 Surprise Me
+          Surprise Me
         </button>
       </form>
 
