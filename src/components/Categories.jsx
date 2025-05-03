@@ -50,7 +50,6 @@ export default function Categories() {
           {}
         );
 
-        // only these four, in order:
         const ORDER = ["Family", "Work", "Financial", "Relationship"];
         const filtered = ORDER.map((name) =>
           grouped[name]

@@ -1,11 +1,15 @@
 .categories {
-  height: 500px;
-  background-color: var(--color-primary-700);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 2rem;
   margin-bottom: 50px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  background-color: var(--color-primary-700);
+}
+
+.categories > .category {
+  flex: 1 1 calc(50% - 20px);
+  min-width: 250px;
 }
 
 .category p {
@@ -16,7 +20,7 @@
 
 .cardRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 10px;
   padding-right: 2rem;
   gap: 10px;
@@ -32,6 +36,11 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .cardTitle {

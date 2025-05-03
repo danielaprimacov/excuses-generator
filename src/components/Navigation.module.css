@@ -14,9 +14,8 @@
 
 .list {
   display: flex;
-  gap: 1.5rem;
-  justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .list a {
@@ -24,11 +23,27 @@
   text-decoration: none;
 }
 
+.navItems {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto; 
+}
+
 .list a:hover,
 .list a:active,
 .list a.active,
 .search:hover {
   color: var(--color-primary-800);
+}
+
+.logo {
+  height: 20px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
 }
 
 .search {
