@@ -1,24 +1,28 @@
 import { NavLink } from "react-router-dom";
 
+import logo from "../assets/images/logo.png";
 import classes from "./Navigation.module.css";
 
 function Navigation() {
   return (
-    <>
-      <header className={classes.header}>
-        <nav>
-          <ul className={classes.list}>
-            <li>
-              <NavLink
-                to=""
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-                end
-              >
-                Home
-              </NavLink>
-            </li>
+    <header className={classes.header}>
+      <nav>
+        <ul className={classes.list}>
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.logoLink} ${classes.active}`
+                  : classes.logoLink
+              }
+            >
+              <img src={logo} alt="Logo" className={classes.logo} />
+            </NavLink>
+          </li>
+          {/* Other nav links grouped on the right */}
+          <div className={classes.navItems}>
             <li>
               <NavLink
                 to="/about"
@@ -62,20 +66,10 @@ function Navigation() {
             <li>
               <div className={classes.search}>Search</div>
             </li>
-            <li>
-              <NavLink
-                to="/admin"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                Admin
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </>
+          </div>
+        </ul>
+      </nav>
+    </header>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./ExcuseGenerator.module.css";
 
@@ -9,7 +10,13 @@ function ExcuseGenerator() {
   const [excuse, setExcuse] = useState(null);
   const [error, setError] = useState("");
 
+  // New state for help modal
+  const [showHelpModal, setShowHelpModal] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
+  const [helpError, setHelpError] = useState("");
+
   const API_URL = "http://localhost:5000/categories";
+  const navigate = useNavigate();
 
   // Fetch and flatten all excuses from categories → situations → excuses
   const fetchAllExcuses = async () => {
@@ -111,6 +118,26 @@ function ExcuseGenerator() {
     }
   };
 
+  // Help modal handlers
+  const openHelp = () => setShowHelpModal(true);
+  const closeHelp = () => {
+    setShowHelpModal(false);
+    setAdminPassword("");
+    setHelpError("");
+  };
+
+  const submitHelp = (e) => {
+    e.preventDefault();
+    // replace with secure check or API call
+    const CORRECT = import.meta.env.VITE_ADMIN_PASSWORD || "letmein";
+    if (adminPassword === CORRECT) {
+      closeHelp();
+      navigate("/admin");
+    } else {
+      setHelpError("Incorrect password");
+    }
+  };
+
   return (
     <div className={classes["excuses-container"]}>
       <h1>Generate an Excuse</h1>
@@ -168,6 +195,16 @@ function ExcuseGenerator() {
             Surprise Me
           </button>
         </div>
+
+        <div className={classes["help-section"]}>
+          <p>
+            Our excuses are tired —{" "}
+            <button type="button" className={classes.help} onClick={openHelp}>
+              help us
+            </button>{" "}
+            give them life!
+          </p>
+        </div>
       </form>
 
       {excuse && (
@@ -185,6 +222,39 @@ function ExcuseGenerator() {
       )}
 
       {error && <p className={classes.error}>❌ {error}</p>}
+
+      {/* Help Modal Overlay */}
+      {showHelpModal && (
+        <div className={classes.modalOverlay}>
+          <div className={classes.modal}>
+            <form onSubmit={submitHelp}>
+              <label className={classes.label}>
+                You need to enter the admin password:
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  className={classes.input}
+                  required
+                />
+              </label>
+              {helpError && <p className={classes.error}>{helpError}</p>}
+              <div className={classes.modalButtons}>
+                <button type="submit" className={classes["submit-btn"]}>
+                  Enter
+                </button>
+                <button
+                  type="button"
+                  onClick={closeHelp}
+                  className={classes["cancel-btn"]}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
