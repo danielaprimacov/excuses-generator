@@ -1,0 +1,30 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: var(--color-gray-600);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navigation {
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.navigation a {
+  font-size: 1.2rem;
+  color: var(--color-primary-300);
+}
+
+.list li {
+  margin-bottom: 20px;
+}
+
+.list a:hover,
+.list a:active {
+  color: var(--color-primary-800);
+}
+
+

@@ -8,6 +8,7 @@ import ExcusePage from "./pages/ExcusePage";
 import ReviewPage from "./pages/ReviewPage";
 import UpgradePage from "./pages/UpgradePage";
 import AdminPage from "./pages/AdminPage";
+import AllExcusesPage from "./pages/AllExcusesPage";
 import SupportPage from "./pages/SupportPage";
 
 const router = createBrowserRouter([
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
       { path: "excuses", element: <ExcusePage /> },
       { path: "reviews", element: <ReviewPage /> },
       { path: "upgrade", element: <UpgradePage /> },
-      { path: "admin", element: <AdminPage /> },
+      {
+        path: "admin",
+        element: <AdminPage />,
+        children: [{ path: "all-excuses", element: <AllExcusesPage /> }],
+      },
       { path: "support", element: <SupportPage /> },
     ],
   },
