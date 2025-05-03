@@ -11,9 +11,9 @@ function ExcuseGenerator() {
   const [error, setError] = useState("");
 
   // New state for help modal
-  const [showHelpModal, setShowHelpModal] = useState(false);
-  const [adminPassword, setAdminPassword] = useState("");
-  const [helpError, setHelpError] = useState("");
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [newExcuseText, setNewExcuseText] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const API_URL = "http://localhost:5000/categories";
   const navigate = useNavigate();
@@ -118,24 +118,23 @@ function ExcuseGenerator() {
     }
   };
 
-  // Help modal handlers
-  const openHelp = () => setShowHelpModal(true);
-  const closeHelp = () => {
-    setShowHelpModal(false);
-    setAdminPassword("");
-    setHelpError("");
+  const openSubmit = () => setShowSubmitModal(true);
+  const closeSubmit = () => {
+    setShowSubmitModal(false);
+    setNewExcuseText("");
+    setSubmitError("");
   };
 
-  const submitHelp = (e) => {
+  const submitExcuse = (e) => {
     e.preventDefault();
-    // replace with secure check or API call
-    const CORRECT = import.meta.env.VITE_ADMIN_PASSWORD || "letmein";
-    if (adminPassword === CORRECT) {
-      closeHelp();
-      navigate("/admin");
-    } else {
-      setHelpError("Incorrect password");
+    if (!newExcuseText.trim()) {
+      setSubmitError("Please describe your excuse before sending.");
+      return;
     }
+    const subject = encodeURIComponent("New Excuse Submission");
+    const body = encodeURIComponent(newExcuseText);
+    window.location.href = `mailto:admin@example.com?subject=${subject}&body=${body}`;
+    closeSubmit();
   };
 
   return (
@@ -199,7 +198,7 @@ function ExcuseGenerator() {
         <div className={classes["help-section"]}>
           <p>
             Our excuses are tired —{" "}
-            <button type="button" className={classes.help} onClick={openHelp}>
+            <button type="button" className={classes.help} onClick={openSubmit}>
               help us
             </button>{" "}
             give them life!
@@ -223,29 +222,31 @@ function ExcuseGenerator() {
 
       {error && <p className={classes.error}>❌ {error}</p>}
 
-      {/* Help Modal Overlay */}
-      {showHelpModal && (
+      {/* Submit New Excuse Modal */}
+      {showSubmitModal && (
         <div className={classes.modalOverlay}>
           <div className={classes.modal}>
-            <form onSubmit={submitHelp}>
+            <h2>Submit a New Excuse</h2>
+            <form onSubmit={submitExcuse}>
               <label className={classes.label}>
-                You need to enter the admin password:
-                <input
-                  type="password"
-                  value={adminPassword}
-                  onChange={(e) => setAdminPassword(e.target.value)}
+                🧐 Hit the Admin with your Best Excuse!
+                <textarea
+                  value={newExcuseText}
+                  onChange={(e) => setNewExcuseText(e.target.value)}
                   className={classes.input}
+                  rows={4}
+                  placeholder="Describe your situation and your suggested excuse..."
                   required
                 />
               </label>
-              {helpError && <p className={classes.error}>{helpError}</p>}
+              {submitError && <p className={classes.error}>{submitError}</p>}
               <div className={classes.modalButtons}>
                 <button type="submit" className={classes["submit-btn"]}>
-                  Enter
+                  Send to Admin
                 </button>
                 <button
                   type="button"
-                  onClick={closeHelp}
+                  onClick={closeSubmit}
                   className={classes["cancel-btn"]}
                 >
                   Cancel
