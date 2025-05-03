@@ -1,56 +1,93 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./LatestResults.module.css";
 
 function LatestResults() {
   const sliderRef = useRef(null);
+  const [cards, setCards] = useState([]);
 
-  const cards = [
-    { id: 1, background: "https://via.placeholder.com/300x200?text=Card+1" },
-    { id: 2, background: "https://via.placeholder.com/300x200?text=Card+2" },
-    { id: 3, background: "https://via.placeholder.com/300x200?text=Card+3" },
-    { id: 4, background: "https://via.placeholder.com/300x200?text=Card+4" },
-    { id: 5, background: "https://via.placeholder.com/300x200?text=Card+5" },
-    { id: 6, background: "https://via.placeholder.com/300x200?text=Card+6" },
-    { id: 7, background: "https://via.placeholder.com/300x200?text=Card+7" },
-  ];
+  const API_URL = "http://localhost:5000/categories";
 
+  // 1) Fetch & flatten all excuses – now each item is an excuse
+  const fetchAllExcuses = async () => {
+    const res = await fetch(API_URL);
+    const categories = await res.json();
+
+    return categories.flatMap((cat) =>
+      cat.situations.flatMap((sit) =>
+        sit.excuses.map((exc) => ({
+          id: exc.excuseId,
+          excuseDescription: exc.excuseDescription,
+          situationId: sit.situationId,
+          situationName: sit.situationName,
+          photoUrl: sit.photoUrl,
+          categoryName: cat.categoryName,
+        }))
+      )
+    );
+  };
+
+  // 2) On mount, pick newest excuses but keep one per situation
+  useEffect(() => {
+    let mounted = true;
+    fetchAllExcuses().then((all) => {
+      if (!mounted) return;
+      // sort by newest excuseId first
+      const sorted = all.sort((a, b) => b.id - a.id);
+      // pick up to 7, skipping duplicates by situationId
+      const picked = [];
+      const seenSituations = new Set();
+      for (const exc of sorted) {
+        if (picked.length >= 7) break;
+        if (!seenSituations.has(exc.situationId)) {
+          picked.push(exc);
+          seenSituations.add(exc.situationId);
+        }
+      }
+      setCards(picked);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // 3) Auto‐scroll logic (unchanged)
   useEffect(() => {
     const slider = sliderRef.current;
-    if (!slider) return;
+    if (!slider || cards.length === 0) return;
 
-    const cardWidth = 300;
-    const gap = 20;
-    const scrollAmount = cardWidth + gap;
+    const CARD_W = 300,
+      GAP = 20,
+      STEP = CARD_W + GAP;
+    let idx = 0;
 
-    let currentIndex = 0;
-
-    const interval = setInterval(() => {
-      // If the next scroll exceeds the visible width, reset back to start
-      if (
-        currentIndex * scrollAmount >=
-        slider.scrollWidth - slider.clientWidth
-      ) {
+    const iv = setInterval(() => {
+      if (idx * STEP >= slider.scrollWidth - slider.clientWidth) {
         slider.scrollTo({ left: 0, behavior: "smooth" });
-        currentIndex = 0;
+        idx = 0;
       } else {
-        slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        currentIndex++;
+        slider.scrollBy({ left: STEP, behavior: "smooth" });
+        idx++;
       }
-    }, 3000); // change slide every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(iv);
+  }, [cards]);
 
   return (
     <div className={classes.results}>
       <p className={classes.heading}>Latest Results</p>
       <div className={classes.slider} ref={sliderRef}>
-        {cards.map((card) => (
+        {cards.map((c) => (
           <div
-            key={card.id}
+            key={c.id}
             className={classes.card}
-            style={{ backgroundImage: `url(${card.background})` }}
-          />
+            style={{ backgroundImage: `url(${c.photoUrl})` }}
+          >
+            <div className={classes.overlay}>
+              <h3 className={classes.title}>{c.excuseDescription}</h3>
+              <p className={classes.subtitle}>{c.situationName}</p>
+            </div>
+          </div>
         ))}
       </div>
     </div>

@@ -1,21 +1,26 @@
 .headline {
-  font-size: 2.5rem;
+  padding-top: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
 }
 
 .wordWrapper {
   display: inline-block;
   position: relative;
-  width: 160px; 
-  height: 40px;
+  width: 220px;
+  height: 70px;
   overflow: hidden;
 }
 
 .word {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 35px;
   opacity: 0;
   transform: translateY(20%);
   transition: opacity 0.8s ease, transform 0.8s ease;
