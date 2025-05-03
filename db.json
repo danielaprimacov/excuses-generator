@@ -8,7 +8,7 @@
           "situationId": 101,
           "situationName": "Missing Family Dinner",
           "situationDescription": "You need a reason for skipping a family meal.",
-          "photoUrl": "https://example.com/family-dinner.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1606659894125-40824878b6ce?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "excuses": [
             {
               "excuseId": 1,
@@ -21,27 +21,221 @@
               "excuseDescription": "Got stuck at work dealing with a sudden issue. I’m so sorry — can we reschedule soon?",
               "format": "Slack",
               "characteristics": ["Realistic", "Not Suspicious"]
-            }
+            },
+            {
+                "excuseId": 3,
+                "excuseDescription": "I just got a call that my neighbor’s child is having an asthma attack—I need to stay here until help arrives.",
+                "format": "Text",
+                "characteristics": ["Dramatic", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 4,
+                "excuseDescription": "I’ve been hit with a migraine so bad I can barely see—have to lie down immediately, sorry to miss dinner.",
+                "format": "Email",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 5,
+                "excuseDescription": "There’s a small gas leak in my kitchen and the repairman is here now—can’t risk staying until it’s fixed.",
+                "format": "SMS",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 6,
+                "excuseDescription": "I’m stranded at the train station—the last train was delayed and I can’t get back in time.",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 7,
+                "excuseDescription": "My building’s basement flooded and I need to help my landlord sort it out right away.",
+                "format": "Phone Call",
+                "characteristics": ["Dramatic", "Not Suspicious"]
+              },
+              {
+                  "excuseId": 8,
+                  "excuseDescription": "I accidentally sat on my car keys and now they’re singing metal under my jeans—can’t find them anywhere!",
+                  "format": "Text",
+                  "characteristics": ["Funny", "Realistic"]
+                },
+                {
+                  "excuseId": 9,
+                  "excuseDescription": "My cat decided to hide in my suitcase and now I’m refusing to move until she emerges.",
+                  "format": "SMS",
+                  "characteristics": ["Funny", "Not Suspicious"]
+                },
+                {
+                  "excuseId": 10,
+                  "excuseDescription": "I tried to make pancakes and somehow ended up with a smoke alarm concerto—must sort this kitchen chaos first!",
+                  "format": "Email",
+                  "characteristics": ["Funny", "Realistic"]
+                },
+                {
+                  "excuseId": 11,
+                  "excuseDescription": "I’m locked in my apartment playing hide-and-seek with a rogue spider; negotiations are ongoing.",
+                  "format": "Slack",
+                  "characteristics": ["Funny", "Not Suspicious"]
+                },
+                {
+                  "excuseId": 12,
+                  "excuseDescription": "My Fitbit thinks I’ve already done 20,000 steps today and refuses to let me move until I rest.",
+                  "format": "Phone Call",
+                  "characteristics": ["Funny", "Realistic"]
+                }
           ]
         },
         {
           "situationId": 105,
           "situationName": "Forgot Important Birthday",
           "situationDescription": "You forgot someone’s birthday and need an excuse.",
-          "photoUrl": "https://example.com/forgot-birthday.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
           "excuses": [
             {
-              "excuseId": 3,
+              "excuseId": 13,
               "excuseDescription": "I've been so caught up with work/family stuff — but I didn’t forget you’re important to me!",
               "format": "Text",
               "characteristics": ["Empathy", "Funny"]
             },
             {
-              "excuseId": 4,
+              "excuseId": 14,
               "excuseDescription": "I wanted to be the last person to wish you a happy birthday — saving the best for last!",
               "format": "Text",
               "characteristics": ["Funny", "Not Suspicious"]
-            }
+            },
+            {
+                "excuseId": 15,
+                "excuseDescription": "I thought your birthday was on the 14th, not the 15th—my calendar app must be playing tricks on me!",
+                "format": "Text",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 16,
+                "excuseDescription": "My phone died last night and erased all my reminders—but that doesn’t erase how much I care about you!",
+                "format": "SMS",
+                "characteristics": ["Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 17,
+                "excuseDescription": "I figured you deserved a belated surprise—think of this as an extended birthday celebration!",
+                "format": "Email",
+                "characteristics": ["Funny", "Empathy"]
+              },
+              {
+                "excuseId": 18,
+                "excuseDescription": "I’ve been so busy time-traveling through my to-do list that I completely lost track of what day it is!",
+                "format": "Slack",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 19,
+                "excuseDescription": "I signed up for an all-day meditation retreat and apparently lost all sense of time—hope your day was amazing!",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 20,
+                "excuseDescription": "I’m so sorry I let your birthday slip by—my notification settings glitched overnight, and I didn’t see the reminder, but that’s on me entirely.",
+                "format": "Text",
+                "characteristics": ["Empathy", "Not Suspicious"]
+              },
+              {
+                "excuseId": 21,
+                "excuseDescription": "My phone’s calendar accidentally reset and wiped my reminders; I just saw your birthday notice now—sorry for the belated wish!",
+                "format": "SMS",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 22,
+                "excuseDescription": "I had to deal with a minor health scare yesterday and was a bit out of it—feel awful for missing your special day.",
+                "format": "Email",
+                "characteristics": ["Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 23,
+                "excuseDescription": "I tried building a birthday robot surprise that ended up locking me in my workshop—escaped just now to wish you a happy birthday!",
+                "format": "Slack",
+                "characteristics": ["Funny", "Realistic"]
+              }
+          ]
+        },
+        {
+          "situationId": 110,
+          "situationName": "Skipping Weekend Visitation",
+          "situationDescription": "You need to cancel your scheduled weekend visit with relatives.",
+          "photoUrl": "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 24,
+              "excuseDescription": "A last-minute work emergency popped up; I’ll have to rain-check this weekend.",
+              "format": "Email",
+              "characteristics": ["Realistic", "Corporate"]
+            },
+            {
+              "excuseId": 25,
+              "excuseDescription": "My car broke down on the way – I’m arranging a tow now, so sorry!",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Technical"]
+            },
+            {
+                "excuseId": 26,
+                "excuseDescription": "My doctor just called with urgent test results—I need to go in for a follow-up right away.",
+                "format": "Text",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 27,
+                "excuseDescription": "I had a severe allergic reaction this morning and am stuck in the ER until they clear me.",
+                "format": "SMS",
+                "characteristics": ["Dramatic", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 28,
+                "excuseDescription": "A water pipe burst in my kitchen and the plumber can only come this afternoon—can’t leave until it’s fixed.",
+                "format": "Email",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 29,
+                "excuseDescription": "My neighbor’s elderly dad fell and I promised to stay until the ambulance arrives.",
+                "format": "Phone Call",
+                "characteristics": ["Evoking Empathy", "Not Suspicious"]
+              },
+              {
+                "excuseId": 30,
+                "excuseDescription": "I agreed to help my uncle move an old piano this weekend—it’s taking way longer than expected.",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Evoking Empathy"]
+              },
+            {
+                "excuseId": 31,
+                "excuseDescription": "My GPS insisted today was tomorrow and sent me in circles—I’m finally back on track but too late for the visit!",
+                "format": "Text",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 32,
+                "excuseDescription": "My cat stole my car keys and won’t give them back—I’m bargaining with drastic cat treats over here.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 33,
+                "excuseDescription": "I offered to help a neighbor change a tire and somehow we’re replacing the whole wheel—won’t be done until tomorrow!",
+                "format": "Email",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 34,
+                "excuseDescription": "Tried to whip up a surprise brunch before heading out and set off the smoke alarm—in full evacuation mode now.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 35,
+                "excuseDescription": "My Fitbit declared today a mandatory rest day and refuses to let me move until I hit 10,000 steps… paradoxical, I know.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Realistic"]
+              }
           ]
         }
       ]
@@ -54,20 +248,160 @@
           "situationId": 102,
           "situationName": "Argument with Partner",
           "situationDescription": "You need to delay or avoid a tough relationship conversation.",
-          "photoUrl": "https://example.com/relationship-argument.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1517502166878-35c93a0072bb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
           "excuses": [
             {
-              "excuseId": 5,
-              "excuseDescription": "I’m emotionally exhausted today and I don't want to make things worse. Can we talk tomorrow?",
+              "excuseId": 36,
+              "excuseDescription": "I’m emotionally exhausted today and don’t want to make things worse—can we talk tomorrow?",
               "format": "Text",
               "characteristics": ["Empathy", "Realistic"]
             },
             {
-              "excuseId": 6,
+              "excuseId": 37,
               "excuseDescription": "I have a work emergency tonight, can we postpone our conversation?",
               "format": "Text",
               "characteristics": ["Realistic", "Not Suspicious"]
-            }
+            },
+            {
+                "excuseId": 38,
+                "excuseDescription": "I need some time to cool off before we discuss things—my emotions are too raw right now.",
+                "format": "Text",
+                "characteristics": ["Dramatic", "Empathy"]
+              },
+              {
+                "excuseId": 39,
+                "excuseDescription": "I’m completely wiped out after back-to-back meetings and can’t give you the attention you deserve—can we talk tomorrow when I’m more present?",
+                "format": "Email",
+                "characteristics": ["Realistic", "Empathy"]
+              },
+              {
+                "excuseId": 40,
+                "excuseDescription": "My friend’s shift got canceled last minute and I promised to cover—stuck at work until late, I’m so sorry.",
+                "format": "SMS",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 41,
+                "excuseDescription": "My car alarm’s been going off non-stop and I’m in crisis mode figuring out how to turn it off—will call you once I’m sorted.",
+                "format": "Slack",
+                "characteristics": ["Dramatic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 42,
+                "excuseDescription": "I’ve got a migraine brewing and don’t want to say things I’ll regret—let’s reschedule when I’m clear-headed.",
+                "format": "Phone Call",
+                "characteristics": ["Realistic", "Empathy"]
+              },
+              {
+                "excuseId": 43,
+                "excuseDescription": "My hamster’s having an existential crisis and I’m the only one who can calm it down—can we chat once I’ve restored its faith in life?",
+                "format": "Text",
+                "characteristics": ["Funny", "Empathy"]
+              },
+              {
+                "excuseId": 44,
+                "excuseDescription": "I spilled coffee all over my laptop and now I’m playing tech doctor to revive it—can we postpone our talk until it’s stable?",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 45,
+                "excuseDescription": "My GPS insisted today was Sunday and sent me on a wild goose chase—I’m still finding my way back home.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 46,
+                "excuseDescription": "My neighbor’s parrot learned to mimic crying and it’s a full-blown opera next door—I need to negotiate a ceasefire before we talk.",
+                "format": "Email",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 47,
+                "excuseDescription": "My best friend texted that they’re locked in a bathroom and I’m on rescue duty—can we push our conversation until I’ve performed a successful extraction?",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              }
+          ]
+        },
+        {
+          "situationId": 115,
+          "situationName": "Cancelling Date Night",
+          "situationDescription": "You need to call off your planned date night.",
+          "photoUrl": "https://images.unsplash.com/photo-1517260917804-95dc088a789d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 48,
+              "excuseDescription": "My headache’s killing me right now—I need some rest, rain-check our date?",
+              "format": "Text",
+              "characteristics": ["Realistic", "Empathy"]
+            },
+            {
+              "excuseId": 49,
+              "excuseDescription": "My friend just went into labour—gotta head to the hospital asap!",
+              "format": "Email",
+              "characteristics": ["Realistic", "Dramatic"]
+            },
+            {
+                "excuseId": 50,
+                "excuseDescription": "My apartment plumbing just burst and I’m knee-deep in water—can’t leave until the plumber arrives.",
+                "format": "SMS",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 51,
+                "excuseDescription": "My nephew’s fever spiked and I’m on babysitter duty at the ER—so sorry but I can’t make tonight.",
+                "format": "Phone Call",
+                "characteristics": ["Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 52,
+                "excuseDescription": "My dog ate the only shirt I planned to wear—I’m scrambling to find something presentable!",
+                "format": "Text",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 53,
+                "excuseDescription": "I just realized I’m highly allergic to those fresh flowers I bought—my face is swelling up already.",
+                "format": "Email",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 54,
+                "excuseDescription": "I accidentally double-booked myself with a work call—hate to bail, but I need to reschedule.",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+            {
+                "excuseId": 55,
+                "excuseDescription": "I just set off a popcorn tornado in my kitchen—now I’m buried under fluffy chaos and can’t escape!",
+                "format": "Text",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 56,
+                "excuseDescription": "My neighbor’s cat decided to have a meowing concert on my balcony and I’m on standby with tuna—rescue mission in progress!",
+                "format": "SMS",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 57,
+                "excuseDescription": "My plants staged a rebellion and have overtaken my hallway—I’m hacking through vines with a kitchen knife!",
+                "format": "Email",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 58,
+                "excuseDescription": "My Fitbit declared today a ‘couch potato intervention’ and won’t let me leave until I finish a marathon of steps… paradoxical, I know.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 59,
+                "excuseDescription": "I’m stuck in an intense yoga pose—apparently I can’t move until I master ‘Ultimate Beginner’s Pretzel’. Send help!",
+                "format": "Slack",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              }
           ]
         }
       ]
@@ -80,34 +414,204 @@
           "situationId": 103,
           "situationName": "Project Deadline Missed",
           "situationDescription": "You can’t finish your work project by the deadline.",
-          "photoUrl": "https://example.com/work-deadline.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1615309878310-8f9ebcc5049b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
           "excuses": [
             {
-              "excuseId": 7,
+              "excuseId": 60,
               "excuseDescription": "Technical blockers came up unexpectedly — I’ll need a brief extension to deliver quality work.",
               "format": "Email",
               "characteristics": ["Corporate", "Professional"]
             },
             {
-              "excuseId": 8,
+              "excuseId": 61,
               "excuseDescription": "My laptop crashed last night and corrupted critical files. I’m working on recovery.",
               "format": "Slack",
               "characteristics": ["Realistic", "Technical"]
-            }
+            },
+            {
+                "excuseId": 62,
+                "excuseDescription": "Stakeholders submitted last-minute change requests to the requirements, and I need time to incorporate them properly.",
+                "format": "Email",
+                "characteristics": ["Professional", "Realistic"]
+              },
+              {
+                "excuseId": 63,
+                "excuseDescription": "A critical vendor deliverable arrived late and I’m blocked until it’s resolved—requesting a brief extension.",
+                "format": "Slack",
+                "characteristics": ["Corporate", "Technical"]
+              },
+              {
+                "excuseId": 64,
+                "excuseDescription": "My key teammate is out sick and I’m covering both our parts of the project—will need extra time to finish.",
+                "format": "Text",
+                "characteristics": ["Empathy", "Professional"]
+              },
+              {
+                "excuseId": 65,
+                "excuseDescription": "We encountered unexpected data integration issues during testing and I’m troubleshooting the root cause now.",
+                "format": "Email",
+                "characteristics": ["Technical", "Realistic"]
+              },
+              {
+                "excuseId": 66,
+                "excuseDescription": "Our server environment went down this morning and IT is on it—resuming work as soon as systems are back online.",
+                "format": "Phone Call",
+                "characteristics": ["Realistic", "Corporate"]
+              },
+              {
+                "excuseId": 67,
+                "excuseDescription": "I discovered my keyboard was stuck in emoji-only mode and had to spend hours translating every line of code back into English.",
+                "format": "Email",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 68,
+                "excuseDescription": "I spilled my entire coffee pot into the server rack—IT has quarantined me and the servers until further notice.",
+                "format": "Text",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 69,
+                "excuseDescription": "My dog chewed through the USB drive containing all my work—I’m negotiating a truce and data recovery plan now.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 70,
+                "excuseDescription": "I uncovered a ‘ghost bug’ in the code that only appears at midnight—it’s taking a full exorcism to remove it.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 71,
+                "excuseDescription": "The building elevator seized with me inside—I’m currently my own IT support and maintenance waiting list.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Dramatic"]
+              }
           ]
         },
         {
           "situationId": 106,
           "situationName": "Missed Early Morning Meeting",
           "situationDescription": "You overslept and missed a work meeting.",
-          "photoUrl": "https://example.com/missed-meeting.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
           "excuses": [
             {
-              "excuseId": 9,
+              "excuseId": 72,
               "excuseDescription": "Alarm didn’t go off due to a phone update glitch — so sorry for missing the meeting!",
               "format": "Slack",
               "characteristics": ["Realistic", "Technical"]
-            }
+            },
+            {
+                "excuseId": 73,
+                "excuseDescription": "My building had an unexpected power outage this morning and my alarm never went off—just got back online.",
+                "format": "Email",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 74,
+                "excuseDescription": "I accidentally set my alarm for PM instead of AM—just realized the mistake, so sorry I missed the call.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 75,
+                "excuseDescription": "My toddler woke up crying non-stop and I had to calm them down before I could even reach my phone.",
+                "format": "Text",
+                "characteristics": ["Evoking Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 76,
+                "excuseDescription": "There was a brief blackout and my backup generator failed—was off-grid until just now.",
+                "format": "SMS",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 77,
+                "excuseDescription": "My smart alarm glitched during its overnight update and never rang—deeply sorry for oversleeping.",
+                "format": "Phone Call",
+                "characteristics": ["Technical", "Not Suspicious"]
+              }
+          ]
+        },
+        {
+          "situationId": 120,
+          "situationName": "Unexpected Overtime Needed",
+          "situationDescription": "You need to stay late at work on short notice.",
+          "photoUrl": "https://images.unsplash.com/photo-1581091870625-86e3d8b58603?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 78,
+              "excuseDescription": "A critical bug popped up in production—I’m triaging it tonight.",
+              "format": "Email",
+              "characteristics": ["Technical", "Corporate"]
+            },
+            {
+              "excuseId": 79,
+              "excuseDescription": "Our key stakeholder requested last-minute changes—keeping me late.",
+              "format": "Slack",
+              "characteristics": ["Corporate", "Professional"]
+            },
+            {
+                "excuseId": 80,
+                "excuseDescription": "Our on-call pager just went off with a high-priority incident—I'm triaging it now and won't be done until it's fully resolved.",
+                "format": "Email",
+                "characteristics": ["Technical", "Corporate"]
+              },
+              {
+                "excuseId": 81,
+                "excuseDescription": "The data center reported an unexpected outage this afternoon—I'm coordinating the recovery effort on-site.",
+                "format": "Slack",
+                "characteristics": ["Professional", "Realistic"]
+              },
+              {
+                "excuseId": 82,
+                "excuseDescription": "A partner vendor delivered a critical report late, and I'm reviewing it to ensure we meet compliance standards.",
+                "format": "Text",
+                "characteristics": ["Corporate", "Not Suspicious"]
+              },
+              {
+                "excuseId": 83,
+                "excuseDescription": "Our quarterly audit team just arrived unannounced—I need to assist them with documentation until they wrap up.",
+                "format": "Phone Call",
+                "characteristics": ["Dramatic", "Realistic"]
+              },
+              {
+                "excuseId": 84,
+                "excuseDescription": "I’ve been asked to stay for an urgent executive briefing on tomorrow’s deliverables—won’t be out of the office until late.",
+                "format": "SMS",
+                "characteristics": ["Corporate", "Professional"]
+              },
+            {
+                "excuseId": 85,
+                "excuseDescription": "Our office coffee machine exploded a geyser of espresso—facilities won’t let me leave until the clean-up crew arrives.",
+                "format": "Email",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 86,
+                "excuseDescription": "The photocopier jammed under a mountain of paper—I’m here playing paper mountain rescuer until further notice.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 87,
+                "excuseDescription": "I borrowed the IT hat and now I’m stuck untangling a spaghetti mess of network cables—won’t escape until every cable’s back in order.",
+                "format": "Text",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 88,
+                "excuseDescription": "Our office plant staged a hostile takeover of the conference room—HR says I have to broker peace before heading home.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Corporate"]
+              },
+              {
+                "excuseId": 89,
+                "excuseDescription": "The emergency lights started blinking in Morse code and I’m duty-bound to decode its message before I can log off.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Dramatic"]
+              }
           ]
         }
       ]
@@ -120,20 +624,659 @@
           "situationId": 104,
           "situationName": "Late Loan Payment",
           "situationDescription": "You missed paying back a financial loan on time.",
-          "photoUrl": "https://example.com/late-payment.jpg",
+          "photoUrl": "https://images.unsplash.com/photo-1587614382346-ac06f89f9ca4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
           "excuses": [
             {
-              "excuseId": 10,
+              "excuseId": 90,
               "excuseDescription": "Bank processing delays caused a problem. I’ll clear the payment within 24 hours.",
               "format": "Email",
               "characteristics": ["Corporate", "Not Suspicious"]
             },
             {
-              "excuseId": 11,
+              "excuseId": 91,
               "excuseDescription": "Unexpected medical expenses popped up this week. I need a little more time.",
               "format": "Email",
               "characteristics": ["Empathy", "Financial"]
-            }
+            },
+            {
+                "excuseId": 92,
+                "excuseDescription": "My autopay bounced because the account number was entered incorrectly—it’s been fixed and the payment will clear today.",
+                "format": "SMS",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 93,
+                "excuseDescription": "I had to cover an unexpected car repair this morning; I’ll have the loan payment processed within the next 48 hours.",
+                "format": "Email",
+                "characteristics": ["Empathy", "Financial"]
+              },
+              {
+                "excuseId": 94,
+                "excuseDescription": "I was locked out of my banking app after too many PIN attempts—the reset process takes about a day, so I’ll send the payment as soon as I regain access.",
+                "format": "Text",
+                "characteristics": ["Realistic", "Corporate"]
+              },
+              {
+                "excuseId": 95,
+                "excuseDescription": "My checkbook got buried under a mountain of paperwork—I'm digging it out now and will mail the payment by end of day.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 96,
+                "excuseDescription": "The bank’s system went down for maintenance and all outgoing transfers are delayed—I’ll retry first thing tomorrow.",
+                "format": "Phone Call",
+                "characteristics": ["Technical", "Not Suspicious"]
+              },
+            {
+                "excuseId": 97,
+                "excuseDescription": "I tried to pay the loan but accidentally sent it to my cousin’s pet-sitting business—now I’m on a treasure hunt to get it back.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 98,
+                "excuseDescription": "My home AI assistant heard “pay loan” as “play lawn” and started mowing the yard at 2 AM—I’m still negotiating reboot terms.",
+                "format": "Email",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 99,
+                "excuseDescription": "I attempted to use voice banking but my dog decided to bark his approval instead—bank thought I was under duress and froze my account.",
+                "format": "Text",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 100,
+                "excuseDescription": "I accidentally paid my coffee subscription instead of the loan—I’ll need to redirect funds once caffeine kicks in properly.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Corporate"]
+              },
+              {
+                "excuseId": 101,
+                "excuseDescription": "My checkbook sprouted legs and walked off—I’m organizing a search party but expect the payment later today.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Dramatic"]
+              }
+          ]
+        },
+        {
+          "situationId": 125,
+          "situationName": "Overdraft Fee Applied",
+          "situationDescription": "You got hit with an overdraft fee and need to explain.",
+          "photoUrl": "https://images.unsplash.com/photo-1617056599121-58f9b4f5bdb7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 102,
+              "excuseDescription": "My direct deposit was delayed—bank didn’t post it in time.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Financial"]
+            },
+            {
+              "excuseId": 103,
+              "excuseDescription": "An automated payment hit unexpectedly—didn’t realize my balance was low.",
+              "format": "Email",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            },
+            {
+                "excuseId": 104,
+                "excuseDescription": "I scheduled my transfer for next month by mistake—thought it was this cycle, so the fee hit before my deposit.",
+                "format": "Email",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 105,
+                "excuseDescription": "An unexpected emergency dental bill posted yesterday morning—my deposit hadn’t arrived yet to cover it.",
+                "format": "Text",
+                "characteristics": ["Realistic", "Financial"]
+              },
+              {
+                "excuseId": 106,
+                "excuseDescription": "My spouse used the joint card for groceries and I forgot to update our budget—sorry I didn’t catch the low balance in time.",
+                "format": "SMS",
+                "characteristics": ["Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 107,
+                "excuseDescription": "The bank’s mobile app displayed the wrong balance after an update glitch—I relied on it and got hit with the fee.",
+                "format": "Slack",
+                "characteristics": ["Technical", "Not Suspicious"]
+              },
+              {
+                "excuseId": 108,
+                "excuseDescription": "A charity donation I scheduled earlier cleared today instead of last week—didn’t realize my account was that low.",
+                "format": "Phone Call",
+                "characteristics": ["Realistic", "Financial"]
+              },
+            {
+                "excuseId": 109,
+                "excuseDescription": "I tipped my barista with my last cent and now my account’s stage-diving into overdraft territory.",
+                "format": "Text",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 110,
+                "excuseDescription": "My phone auto-paid my subscription to ‘Invisible Yacht Club’—still waiting for my imaginary yacht to arrive.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 111,
+                "excuseDescription": "I accidentally bought 1,000 ‘mystery boxes’ online—turns out they were 99 cents each and drained my account.",
+                "format": "Email",
+                "characteristics": ["Funny", "Financial"]
+              },
+              {
+                "excuseId": 112,
+                "excuseDescription": "My smart fridge overheard ‘order snacks’ and went on a midnight shopping spree—apparently it’s a foodie now.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 113,
+                "excuseDescription": "I sponsored a snail-racing league on a whim—didn’t check the entry fees before cheering them on.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Dramatic"]
+              }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryId": 5,
+      "categoryName": "Health",
+      "situations": [
+        {
+          "situationId": 201,
+          "situationName": "Doctor Appointment Rescheduled",
+          "situationDescription": "You need to postpone your medical appointment.",
+          "photoUrl": "https://images.unsplash.com/photo-1580281658629-235c5ece56f8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 114,
+              "excuseDescription": "My insurance authorization fell through—can we pick a new date?",
+              "format": "Email",
+              "characteristics": ["Professional", "Realistic"]
+            },
+            {
+              "excuseId": 115,
+              "excuseDescription": "I’m still recovering from my last visit—need another week before I can come in.",
+              "format": "Text",
+              "characteristics": ["Empathy", "Realistic"]
+            },
+            {
+                "excuseId": 116,
+                "excuseDescription": "I woke up with a sudden allergic reaction and need to monitor it for another day—can we reschedule?",
+                "format": "Email",
+                "characteristics": ["Realistic", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 117,
+                "excuseDescription": "My child’s school just called—there’s been an incident and I need to pick them up immediately.",
+                "format": "Text",
+                "characteristics": ["Professional", "Empathy"]
+              },
+              {
+                "excuseId": 118,
+                "excuseDescription": "The clinic’s system double-booked my slot and they asked me to come later—what time works for you next week?",
+                "format": "SMS",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 119,
+                "excuseDescription": "I realized I’m due for an important work webinar at the same time—can we find another slot?",
+                "format": "Slack",
+                "characteristics": ["Professional", "Realistic"]
+              },
+              {
+                "excuseId": 120,
+                "excuseDescription": "The doctor’s office called to say they’re awaiting new test results—looks like I need to come back after they arrive.",
+                "format": "Phone Call",
+                "characteristics": ["Professional", "Not Suspicious"]
+              },
+            {
+                "excuseId": 121,
+                "excuseDescription": "My smart pill dispenser went rogue and locked me out—I’m negotiating peaceful access back to my meds before I can leave.",
+                "format": "Text",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 122,
+                "excuseDescription": "I tried to video-call in and accidentally activated a filter that turned me into a potato—doctor couldn’t take me seriously!",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 123,
+                "excuseDescription": "My fitness tracker said I’m already ‘too healthy’ and refused to let me out the door—apparently I need more rest.",
+                "format": "Email",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 124,
+                "excuseDescription": "My dog hid my car keys in protest of vet visits—I’m on a top-secret mission to retrieve them from under the couch.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 125,
+                "excuseDescription": "I accidentally turned my calendar notifications off with one sneeze—only just realized I’m late for my own appointment!",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Realistic"]
+              }
+          ]
+        },
+        {
+          "situationId": 205,
+          "situationName": "Forgot Medication",
+          "situationDescription": "You skipped your daily prescription and need to explain to your doctor.",
+          "photoUrl": "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 126,
+              "excuseDescription": "I changed routines and accidentally left my pills at home.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            },
+                    {
+              "excuseId": 127,
+              "excuseDescription": "My pill organizer was misplaced during travel—just found it now.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Technical"]
+            },
+            {
+                "excuseId": 128,
+                "excuseDescription": "I was juggling back-to-back appointments and my pill organizer got buried under my paperwork—just uncovered it now.",
+                "format": "Email",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 129,
+                "excuseDescription": "I felt perfectly fine this morning and skipped it by mistake—realized only when evening rolled around.",
+                "format": "Text",
+                "characteristics": ["Realistic", "Empathy"]
+              },
+              {
+                "excuseId": 130,
+                "excuseDescription": "My travel bag zipper jammed shut overnight with my meds inside—I had to carefully unstick it before I could take them.",
+                "format": "SMS",
+                "characteristics": ["Technical", "Realistic"]
+              },
+              {
+                "excuseId": 131,
+                "excuseDescription": "I thought I’d refilled my prescription last week but discovered the bottle was empty—ran out and just got my refill today.",
+                "format": "Phone Call",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 132,
+                "excuseDescription": "I set an alarm reminder but my phone auto-silenced overnight—I didn’t wake up until much later.",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Technical"]
+              },
+            {
+                "excuseId": 133,
+                "excuseDescription": "My smart speaker misheard “take meds” as “play Mads”—it blasted heavy metal until I missed my dose.",
+                "format": "Text",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 134,
+                "excuseDescription": "I woke up cocooned in my blanket burrito and couldn’t unroll in time to reach my pills.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 135,
+                "excuseDescription": "My cat staged a hostage situation with my pills hidden under the couch—I'm in delicate negotiations.",
+                "format": "Email",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 136,
+                "excuseDescription": "I thought my dog buried my pills as a treasure—spent the morning digging up the backyard.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 137,
+                "excuseDescription": "My goldfish gave me the side-eye all morning—I decided to prioritize emotional support before meds.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Not Suspicious"]
+              }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryId": 6,
+      "categoryName": "Travel",
+      "situations": [
+        {
+          "situationId": 301,
+          "situationName": "Flight Delay",
+          "situationDescription": "Your flight was delayed and you need to notify someone.",
+          "photoUrl": "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 138,
+              "excuseDescription": "Air traffic control held us an extra hour—apologies for the delay!",
+              "format": "Email",
+              "characteristics": ["Professional", "Not Suspicious"]
+            },
+            {
+              "excuseId": 139,
+              "excuseDescription": "Our connecting flight was late—this gate change slowed us down.",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Technical"]
+            },
+            {
+                "excuseId": 140,
+                "excuseDescription": "Crew duty time limits required us to wait for a fresh team before departure.",
+                "format": "SMS",
+                "characteristics": ["Professional", "Realistic"]
+              },
+              {
+                "excuseId": 141,
+                "excuseDescription": "Heavy fog at our destination reduced visibility—air traffic control has us on hold.",
+                "format": "Email",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 142,
+                "excuseDescription": "Routine maintenance flagged a minor hydraulic issue and technicians are resolving it now.",
+                "format": "Slack",
+                "characteristics": ["Technical", "Professional"]
+              },
+              {
+                "excuseId": 143,
+                "excuseDescription": "De-icing trucks were delayed by a backlog—our turn finally came but pushed us behind schedule.",
+                "format": "Text",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 144,
+                "excuseDescription": "A fellow passenger had a medical emergency; we waited on the tarmac for paramedics.",
+                "format": "Phone Call",
+                "characteristics": ["Dramatic", "Evoking Empathy"]
+              },
+            {
+                "excuseId": 145,
+                "excuseDescription": "The airport coffee machine went on strike until we met its espresso quota—barista negotiations are still ongoing!",
+                "format": "Text",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 146,
+                "excuseDescription": "My suitcase joined a conga line down the terminal and I’ve been chasing it ever since.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 147,
+                "excuseDescription": "The gate agent challenged me to a dance-off for priority boarding—I’m still perfecting my moves.",
+                "format": "Email",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 148,
+                "excuseDescription": "My GPS in the airport sent me to the wrong terminal and I ended up exploring the ‘lost and found’ jungle.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 149,
+                "excuseDescription": "A flock of very determined seagulls staged a protest on the runway—we’re waiting on animal control.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              }
+          ]
+        },
+        {
+          "situationId": 305,
+          "situationName": "Lost Luggage",
+          "situationDescription": "Your baggage didn’t arrive—explaining why you’re unprepared.",
+          "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 150,
+              "excuseDescription": "Looks like my bag went to the wrong carousel—filing a report now.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            },
+            {
+              "excuseId": 151,
+              "excuseDescription": "Customs held my luggage for extra inspection—sorry I’m running late.",
+              "format": "Email",
+              "characteristics": ["Realistic", "Technical"]
+            },
+{
+            "excuseId": 152,
+            "excuseDescription": "The airline misplaced my bag tag and my luggage is on a joyride to who-knows-where—I’m working with lost & found now.",
+            "format": "Text",
+            "characteristics": ["Funny", "Realistic"]
+          },
+          {
+            "excuseId": 153,
+            "excuseDescription": "My suitcase got zip-locked shut by TSA for a random security check—I’m waiting for them to clear it.",
+            "format": "SMS",
+            "characteristics": ["Technical", "Not Suspicious"]
+          },
+          {
+            "excuseId": 154,
+            "excuseDescription": "A fellow passenger’s bag was identical to mine and we swapped them by accident—I’m sorting it out at the carousel.",
+            "format": "Email",
+            "characteristics": ["Realistic", "Not Suspicious"]
+          },
+          {
+            "excuseId": 155,
+            "excuseDescription": "My luggage took an unscheduled detour through three other countries before realizing the mistake—I’ve filed an international alert.",
+            "format": "Slack",
+            "characteristics": ["Dramatic", "Funny"]
+          },
+          {
+            "excuseId": 156,
+            "excuseDescription": "The baggage handlers are treating my bag like a VIP—it’s still in the lounge and won’t join the main party until later.",
+            "format": "Phone Call",
+            "characteristics": ["Funny", "Evoking Empathy"]
+          },
+        {
+            "excuseId": 157,
+            "excuseDescription": "My suitcase decided to go on a solo vacation and is currently lounging poolside in Miami—tracking its Instagram now.",
+            "format": "Text",
+            "characteristics": ["Funny", "Dramatic"]
+          },
+          {
+            "excuseId": 158,
+            "excuseDescription": "I caught my bag trying to sneak onto a cargo ship bound for Antarctica—airline’s issuing a rescue mission.",
+            "format": "SMS",
+            "characteristics": ["Funny", "Realistic"]
+          },
+          {
+            "excuseId": 159,
+            "excuseDescription": "Customs stamped ‘VIP only’ on my luggage and it’s sipping champagne in the First Class lounge.",
+            "format": "Email",
+            "characteristics": ["Funny", "Not Suspicious"]
+          },
+          {
+            "excuseId": 160,
+            "excuseDescription": "My bag joined a flash mob in baggage claim and I’m still negotiating its release choreography.",
+            "format": "Slack",
+            "characteristics": ["Funny", "Dramatic"]
+          },
+          {
+            "excuseId": 161,
+            "excuseDescription": "The baggage carousel has unionized and is on strike until they get better tips—my bag’s picketing right now.",
+            "format": "Phone Call",
+            "characteristics": ["Funny", "Realistic"]
+          }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "categoryId": 7,
+      "categoryName": "Education",
+      "situations": [
+        {
+          "situationId": 401,
+          "situationName": "Missed Assignment Deadline",
+          "situationDescription": "You didn’t submit your homework on time.",
+          "photoUrl": "https://images.unsplash.com/photo-1600164256252-6b2b3cd92bf8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 162,
+              "excuseDescription": "I misunderstood the due date—thought it was next week!",
+              "format": "Email",
+              "characteristics": ["Realistic", "Not Suspicious"]
+            },
+            {
+              "excuseId": 163,
+              "excuseDescription": "My computer crashed while saving—lost half my work.",
+              "format": "Text",
+              "characteristics": ["Technical", "Realistic"]
+            },
+            {
+                "excuseId": 164,
+                "excuseDescription": "My pet goldfish swam into my laptop bag and knocked my flash drive into the filter—still fishing files out!",
+                "format": "Text",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 165,
+                "excuseDescription": "I volunteered at a last-minute charity event and got so caught up helping that I lost track of all deadlines.",
+                "format": "Email",
+                "characteristics": ["Empathy", "Realistic"]
+              },
+              {
+                "excuseId": 166,
+                "excuseDescription": "I sneezed so hard while dusting my desk that I knocked my notes off and can’t find a single page.",
+                "format": "SMS",
+                "characteristics": ["Dramatic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 167,
+                "excuseDescription": "I thought the submission portal closed at midnight, but it actually shut at 8 PM—my bad on the timing!",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 168,
+                "excuseDescription": "I got stuck in an elevator on campus—just got out and logged in to submit, but it’s too late now.",
+                "format": "Phone Call",
+                "characteristics": ["Dramatic", "Evoking Empathy"]
+              },
+            {
+                "excuseId": 169,
+                "excuseDescription": "My laptop thought it was April Fools’ Day and hid my assignment in a prank folder—I’ve been searching ever since!",
+                "format": "Email",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 170,
+                "excuseDescription": "My hamster chewed through my charger cable overnight—my computer conked out before I could submit.",
+                "format": "Text",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 171,
+                "excuseDescription": "I taught my parrot to hand in my assignment, but it flew off with it to the park—still trying to negotiate retrieval!",
+                "format": "SMS",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 172,
+                "excuseDescription": "I tried submitting via voice-to-text, but my dog’s enthusiastic barking got transcribed instead of my essay.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Not Suspicious"]
+              },
+              {
+                "excuseId": 173,
+                "excuseDescription": "My smart assistant misheard 'upload assignment' as 'undo assignment' and reversed all my progress—classic tech fail.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Technical"]
+              }
+          ]
+        },
+        {
+          "situationId": 405,
+          "situationName": "Late to Class",
+          "situationDescription": "You arrived late to your lecture.",
+          "photoUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+          "excuses": [
+            {
+              "excuseId": 174,
+              "excuseDescription": "My bus broke down on the way—jumped on a taxi but got delayed.",
+              "format": "Slack",
+              "characteristics": ["Realistic", "Technical"]
+            },
+            {
+              "excuseId": 175,
+              "excuseDescription": "Traffic was backed up due to an accident—sorry I couldn’t make it on time.",
+              "format": "Text",
+              "characteristics": ["Realistic", "Empathy"]
+            },
+            {
+                "excuseId": 176,
+                "excuseDescription": "My alarm went off but I hit snooze one too many times—woke up in a panic when I saw the time!",
+                "format": "Text",
+                "characteristics": ["Realistic", "Not Suspicious"]
+              },
+              {
+                "excuseId": 177,
+                "excuseDescription": "I accidentally wandered into the wrong lecture hall and realized it halfway through—by then the bell had already rung.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 178,
+                "excuseDescription": "My roommate locked me out of our dorm by mistake—I had to wait for them to find the spare key.",
+                "format": "Email",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 179,
+                "excuseDescription": "I tripped over my untied shoelace on the stairs and twisted my ankle—had to catch my breath before I could continue.",
+                "format": "Slack",
+                "characteristics": ["Realistic", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 180,
+                "excuseDescription": "My pet parakeet flew off with my lecture notes and I spent half the morning coaxing it back.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+            {
+                "excuseId": 181,
+                "excuseDescription": "I tried sprinting to class but my shoelaces betrayed me—face-planted right outside the lecture hall.",
+                "format": "Text",
+                "characteristics": ["Funny", "Dramatic"]
+              },
+              {
+                "excuseId": 182,
+                "excuseDescription": "My backpack zipper gave up the ghost and spilled all my things—spent ten minutes herding pens and papers back in.",
+                "format": "SMS",
+                "characteristics": ["Funny", "Realistic"]
+              },
+              {
+                "excuseId": 183,
+                "excuseDescription": "I mistook my alarm tone for my cat’s meow and spent five minutes searching for a phantom feline.",
+                "format": "Email",
+                "characteristics": ["Funny", "Technical"]
+              },
+              {
+                "excuseId": 184,
+                "excuseDescription": "My neighbor decided to practice tuba at 8 AM—was stuck in a brass duet until I could escape the noise.",
+                "format": "Slack",
+                "characteristics": ["Funny", "Evoking Empathy"]
+              },
+              {
+                "excuseId": 185,
+                "excuseDescription": "I got trapped in a crowd of tourists taking selfies on campus—I’m basically a reluctant photo bomb.",
+                "format": "Phone Call",
+                "characteristics": ["Funny", "Not Suspicious"]
+              }
           ]
         }
       ]

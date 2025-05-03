@@ -29,7 +29,6 @@ function Headline() {
           </span>
         ))}
       </span>
-      <span> here</span>
       <p>Exit Strategies for Everyday Life</p>
     </div>
   );

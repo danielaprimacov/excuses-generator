@@ -129,7 +129,7 @@ function ExcuseGenerator() {
         </label>
 
         <label>
-          <strong>Tone</strong>
+          <strong>Tone *</strong>
           <select
             value={tone}
             onChange={(e) => setTone(e.target.value)}
