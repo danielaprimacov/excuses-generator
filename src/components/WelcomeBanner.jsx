@@ -8,17 +8,9 @@ function WelcomeBanner() {
     <>
       <div className={classes.banner}>
         <Headline />
-        <div className={classes.actions}>
-          <Link to="/about" className={classes["learn-btn"]}>
-            Learn more
-          </Link>
-          <Link to="/upgrade" className={classes["upgrade-btn"]}>
-            Upgrade
-          </Link>
           <Link to="/excuses" className={classes["generate-btn"]}>
-            Generate New Excuse
+           Get Started
           </Link>
-        </div>
       </div>
     </>
   );

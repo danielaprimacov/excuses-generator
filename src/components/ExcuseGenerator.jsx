@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import classes from "./ExcuseGenerator.module.css";
 
 function ExcuseGenerator() {
-  const [userSituationInput, setUserSituationInput] = useState("");
-  const [tone, setTone] = useState("Realistic");
-  const [format, setFormat] = useState("");
+  const [step, setStep] = useState(0);
+  const [priority, setPriority] = useState("");
+  const [userRole, setUserRole] = useState("");
+  const [bossRole, setBossRole] = useState("");
+  const [criteria, setCriteria] = useState([]);
+  const [situationInput, setSituationInput] = useState("");
   const [excuse, setExcuse] = useState(null);
   const [error, setError] = useState("");
-
-  // New state for help modal
-  const [showSubmitModal, setShowSubmitModal] = useState(false);
-  const [newExcuseText, setNewExcuseText] = useState("");
-  const [submitError, setSubmitError] = useState("");
 
   const API_URL = "http://localhost:5000/categories";
   const navigate = useNavigate();
@@ -34,33 +31,27 @@ function ExcuseGenerator() {
     );
   };
 
-  // Filter logic by tone, format, and all keywords in the situation input
-  const filterExcuses = (excuses, { situationKeyword, tone, format }) => {
+  // Filter logic by criteria and keywords
+  const filterExcuses = (excuses, { situationKeyword, criteria }) => {
     let filtered = [...excuses];
 
-    // Filter by tone
-    if (tone) {
-      filtered = filtered.filter((e) => e.characteristics.includes(tone));
-    }
-
-    // Filter by format
-    if (format) {
-      const fmt = format.toLowerCase();
-      filtered = filtered.filter((e) => e.format.toLowerCase() === fmt);
+    // Filter by each selected criterion (e.g., "Realistic", "Not Suspicious")
+    if (criteria.length) {
+      filtered = filtered.filter((e) =>
+        criteria.every((c) => e.characteristics.includes(c))
+      );
     }
 
     // Filter by every keyword in the situation input
     if (situationKeyword) {
       const keywords = situationKeyword
         .toLowerCase()
-        .split(/\s+/) // split on whitespace
-        .filter((w) => w); // remove empty strings
+        .split(/\s+/)
+        .filter((w) => w);
 
       filtered = filtered.filter((e) => {
         const name = e.situationName.toLowerCase();
         const desc = (e.situationDescription || "").toLowerCase();
-
-        // each keyword must appear in either name or description
         return keywords.every(
           (word) => name.includes(word) || desc.includes(word)
         );
@@ -70,192 +61,154 @@ function ExcuseGenerator() {
     return filtered;
   };
 
-  // Pick a random element from an array
+  // Pick a random element
   const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-  // Generate an excuse matching filters
-  const generateExcuseSmart = async (options) => {
-    const all = await fetchAllExcuses();
-    const filtered = filterExcuses(all, options);
-    if (filtered.length === 0) {
-      throw new Error("No matching excuses found for your situation.");
-    }
-    return pickRandom(filtered);
-  };
-
-  // Generate a completely random excuse
-  const generateRandomExcuse = async () => {
-    const all = await fetchAllExcuses();
-    return pickRandom(all);
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setExcuse(null);
+  // Generate excuse using current inputs
+  const generateExcuse = async () => {
     setError("");
+    setExcuse(null);
     try {
-      const result = await generateExcuseSmart({
-        situationKeyword: userSituationInput,
-        tone,
-        format,
+      const all = await fetchAllExcuses();
+      const filtered = filterExcuses(all, {
+        situationKeyword: situationInput,
+        criteria,
       });
-      setExcuse(result);
+      if (!filtered.length) throw new Error("No matching excuses found.");
+      setExcuse(pickRandom(filtered));
     } catch (err) {
       setError(err.message);
     }
   };
 
-  // Handle “Surprise Me” click
-  const handleSurprise = async () => {
-    setExcuse(null);
-    setError("");
-    try {
-      const result = await generateRandomExcuse();
-      setExcuse(result);
-    } catch {
-      setError("Something went wrong generating a random excuse.");
-    }
+  // Handlers for each step
+  const handleCriteriaToggle = (c) => {
+    setCriteria((prev) =>
+      prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]
+    );
   };
 
-  const openSubmit = () => setShowSubmitModal(true);
-  const closeSubmit = () => {
-    setShowSubmitModal(false);
-    setNewExcuseText("");
-    setSubmitError("");
-  };
+  // Render wizard step
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return (
+          <div className={classes.step}>
+            <h2>Select Priority Level</h2>
+            {[
+              { label: "Super urgent (in an hour)", value: "1h" },
+              { label: "High (today)", value: "today" },
+              { label: "Medium (this week)", value: "week" },
+              { label: "Low (1 week)", value: "1w" },
+            ].map((opt) => (
+              <button
+                key={opt.value}
+                className={`${classes.choiceButton} ${priority === opt.value ? classes.selected : ''}`}
+                onClick={() => { setPriority(opt.value); setStep(step + 1); }}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        );
 
-  const submitExcuse = (e) => {
-    e.preventDefault();
-    if (!newExcuseText.trim()) {
-      setSubmitError("Please describe your excuse before sending.");
-      return;
+      case 1:
+        return (
+          <div className={classes.step}>
+            <h2>Select Your Role</h2>
+            {["Employee", "Student", "Freelancer", "Parent"].map((role) => (
+              <button
+                key={role}
+                className={`${classes.choiceButton} ${userRole === role ? classes.selected : ''}`}
+                onClick={() => { setUserRole(role); setStep(step + 1); }}
+              >
+                {role}
+              </button>
+            ))}
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className={classes.step}>
+            <h2>Select Boss' Role</h2>
+            {["Manager", "Mom", "Husband", "Professor", "Team Lead"].map((b) => (
+              <button
+                key={b}
+                className={`${classes.choiceButton} ${bossRole === b ? classes.selected : ''}`}
+                onClick={() => { setBossRole(b); setStep(step + 1); }}
+              >
+                {b}
+              </button>
+            ))}
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className={classes.step}>
+            <h2>Select Excuse Criteria</h2>
+            {["Dramatic", "Realistic", "Not Suspicious", "Empathy", "LinkedIn Tone"].map((c) => (
+              <button
+                key={c}
+                className={`${classes.choiceButton} ${criteria.includes(c) ? classes.selected : ''}`}
+                onClick={() => handleCriteriaToggle(c)}
+              >
+                {c}
+              </button>
+            ))}
+            <div className={classes.nextWrap}>
+              <button
+                className={classes.nextBtn}
+                disabled={!criteria.length}
+                onClick={() => setStep(step + 1)}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        );
+
+      case 4:
+        return (
+          <form
+            className={classes.step}
+            onSubmit={(e) => { e.preventDefault(); generateExcuse(); }}
+          >
+            <h2>Describe Your Situation</h2>
+            <textarea
+              value={situationInput}
+              onChange={(e) => setSituationInput(e.target.value)}
+              placeholder="e.g., 'I'm running late for a client meeting...'"
+              className={classes.textarea}
+              required
+            />
+            <button type="submit" className={classes.submitBtn}>
+              Generate Excuse
+            </button>
+          </form>
+        );
+
+      default:
+        return null;
     }
-    const subject = encodeURIComponent("New Excuse Submission");
-    const body = encodeURIComponent(newExcuseText);
-    window.location.href = `mailto:admin@example.com?subject=${subject}&body=${body}`;
-    closeSubmit();
   };
 
   return (
     <div className={classes["excuses-container"]}>
       <h1>Generate an Excuse</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          <strong>Describe Your Situation</strong>
-          <input
-            className={classes["form-input"]}
-            type="text"
-            value={userSituationInput}
-            onChange={(e) => setUserSituationInput(e.target.value)}
-            placeholder="ex. 'meeting', 'birthday', 'loan'"
-            required
-          />
-        </label>
-
-        <label>
-          <strong>Tone *</strong>
-          <select
-            value={tone}
-            onChange={(e) => setTone(e.target.value)}
-            required
-          >
-            <option value="Realistic">Realistic</option>
-            <option value="Empathy">Empathy</option>
-            <option value="Funny">Funny</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Not Suspicious">Not Suspicious</option>
-            <option value="Technical">Technical</option>
-            <option value="Professional">Professional</option>
-          </select>
-        </label>
-
-        <label>
-          <strong>Format (optional)</strong>
-          <select value={format} onChange={(e) => setFormat(e.target.value)}>
-            <option value="">Any</option>
-            <option value="Text">Text</option>
-            <option value="Slack">Slack</option>
-            <option value="Email">Email</option>
-          </select>
-        </label>
-
-        <div className={classes.buttons}>
-          <button className={classes.submit} type="submit">
-            Generate Excuse
-          </button>
-
-          <button
-            className={classes.surprise}
-            type="button"
-            onClick={handleSurprise}
-          >
-            Surprise Me
-          </button>
-        </div>
-
-        <div className={classes["help-section"]}>
-          <p>
-            Our excuses are tired —{" "}
-            <button type="button" className={classes.help} onClick={openSubmit}>
-              help us
-            </button>{" "}
-            give them life!
-          </p>
-        </div>
-      </form>
+      {renderStep()}
 
       {excuse && (
         <div className={classes.excuse}>
           <h2>🧾 Excuse:</h2>
-          <p>
-            <strong>{excuse.excuseDescription}</strong>
-          </p>
-          <p>
-            <em>
-              From: {excuse.situationName} ({excuse.categoryName})
-            </em>
-          </p>
+          <p><strong>{excuse.excuseDescription}</strong></p>
+          <p><em>From: {excuse.situationName} ({excuse.categoryName})</em></p>
         </div>
       )}
 
       {error && <p className={classes.error}>❌ {error}</p>}
-
-      {/* Submit New Excuse Modal */}
-      {showSubmitModal && (
-        <div className={classes.modalOverlay}>
-          <div className={classes.modal}>
-            <h2>Submit a New Excuse</h2>
-            <form onSubmit={submitExcuse}>
-              <label className={classes.label}>
-                🧐 Hit the Admin with your Best Excuse!
-                <textarea
-                  value={newExcuseText}
-                  onChange={(e) => setNewExcuseText(e.target.value)}
-                  className={classes.input}
-                  rows={4}
-                  placeholder="Describe your situation and your suggested excuse..."
-                  required
-                />
-              </label>
-              {submitError && <p className={classes.error}>{submitError}</p>}
-              <div className={classes.modalButtons}>
-                <button type="submit" className={classes["submit-btn"]}>
-                  Send to Admin
-                </button>
-                <button
-                  type="button"
-                  onClick={closeSubmit}
-                  className={classes["cancel-btn"]}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
