@@ -19,30 +19,23 @@
 .banner p {
 }
 
-.actions {
-  padding-top: 1.2rem;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.learn-btn,
-.upgrade-btn,
 .generate-btn {
-  width: 14rem;
+  width: 20rem;
+  height: 3rem;
   cursor: pointer;
-  padding: 0.6rem;
+  padding: 0.7rem;
   background-color: #fefae0;
   border-radius: 0.7rem;
   color: var(--color-gray-400);
   text-align: center;
+  font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
   text-decoration: none;
   transition: transform 0.5s ease-in-out;
+  margin-top: 2rem;
 }
 
-.learn-btn:hover,
-.upgrade-btn:hover,
 .generate-btn:hover {
   color: var(--color-primary-500);
   transform: scale(1.1);

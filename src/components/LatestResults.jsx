@@ -75,7 +75,7 @@ function LatestResults() {
 
   return (
     <div className={classes.results}>
-      <p className={classes.heading}>Latest Results</p>
+      <p className={classes.heading}>People also generated</p>
       <div className={classes.slider} ref={sliderRef}>
         {cards.map((c) => (
           <div
