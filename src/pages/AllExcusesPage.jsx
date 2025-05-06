@@ -1,5 +1,7 @@
+import AllExcuses from "../components/AllExcuses";
+
 function AllExcusesPage() {
-  return <>All excuses</>;
+  return <AllExcuses />;
 }
 
 export default AllExcusesPage;

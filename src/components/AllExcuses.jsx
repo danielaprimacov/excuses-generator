@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./AllExcuses.module.css";
 
 const API_URL = "http://localhost:5000/categories";
 
-function AllExcuses() {
+export default function AllExcuses() {
   const [excuses, setExcuses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedExcuse, setSelectedExcuse] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCategories() {
@@ -16,21 +20,21 @@ function AllExcuses() {
         const res = await fetch(API_URL);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        console.log("Fetched data:", data);
 
-        // handle either shape: data = { categories: [...] } or data = [...]
         const categories = Array.isArray(data)
           ? data
           : Array.isArray(data.categories)
           ? data.categories
           : [];
 
-        // flatten all excuses across categories
+        // include situationId on each excuse
         const all = categories.flatMap(
           (cat) =>
             cat.situations?.flatMap((sit) =>
               sit.excuses.map((exc) => ({
                 ...exc,
+                categoryId: cat.categoryId,
+                situationId: sit.situationId,
                 categoryName: cat.categoryName,
                 situationName: sit.situationName,
               }))
@@ -48,13 +52,44 @@ function AllExcuses() {
     fetchCategories();
   }, []);
 
-  // derive category options from loaded data
+  const handleCardClick = (exc) => {
+    setSelectedExcuse(exc);
+    setShowModal(true);
+    // navigate using situationId
+    navigate(
+      `/admin/edit/${exc.situationId}/${exc.excuseId}``/admin/edit/${exc.categoryId}/${exc.situationId}/${exc.excuseId}`
+    );
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+    setSelectedExcuse(null);
+    navigate("/admin/all-excuses");
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this excuse?")) return;
+    try {
+      // delete via situation/:situationId/excuses/:id
+      const res = await fetch(
+        `${API_URL}/${selectedExcuse.categoryId}/situations/${selectedExcuse.situationId}/excuses/${id}`,
+        { method: "DELETE" }
+      );
+      if (!res.ok) throw new Error(`Delete failed: ${res.status}`);
+      setExcuses((prev) => prev.filter((e) => e.excuseId !== id));
+      handleClose();
+    } catch (err) {
+      console.error(err);
+      alert("Error deleting excuse: " + err.message);
+    }
+  };
+
+  // derive category options
   const categoryOptions = [
     "All",
     ...Array.from(new Set(excuses.map((e) => e.categoryName))),
   ];
 
-  // filter excuses based on selection
   const displayedExcuses =
     selectedCategory === "All"
       ? excuses
@@ -83,7 +118,11 @@ function AllExcuses() {
 
       <div className={classes.container}>
         {displayedExcuses.map((exc) => (
-          <div key={exc.excuseId} className={classes.excuseCard}>
+          <div
+            key={exc.excuseId}
+            className={classes.excuseCard}
+            onClick={() => handleCardClick(exc)}
+          >
             <h4 className={classes.context}>
               {exc.categoryName} — {exc.situationName}
             </h4>
@@ -94,8 +133,45 @@ function AllExcuses() {
           </div>
         ))}
       </div>
+
+      {showModal && selectedExcuse && (
+        <div className={classes.modalOverlay} onClick={handleClose}>
+          <div
+            className={classes.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>{selectedExcuse.excuseDescription}</h2>
+            <p>
+              <strong>Category:</strong> {selectedExcuse.categoryName}
+            </p>
+            <p>
+              <strong>Situation:</strong> {selectedExcuse.situationName}
+            </p>
+            <p>
+              <strong>Format:</strong> {selectedExcuse.format}
+            </p>
+            <p>
+              <strong>Characteristics:</strong>{" "}
+              {selectedExcuse.characteristics.join(", ")}
+            </p>
+            <div className={classes.modalActions}>
+              <button
+                onClick={() =>
+                  navigate(
+                    `/admin/edit/${selectedExcuse.categoryId}/${selectedExcuse.situationId}/${selectedExcuse.excuseId}`
+                  )
+                }
+              >
+                Edit
+              </button>
+              <button onClick={() => handleDelete(selectedExcuse.excuseId)}>
+                Delete
+              </button>
+              <button onClick={handleClose}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
-
-export default AllExcuses;

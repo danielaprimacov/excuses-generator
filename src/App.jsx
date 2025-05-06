@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/RootLayout";
@@ -9,6 +13,7 @@ import ReviewPage from "./pages/ReviewPage";
 import UpgradePage from "./pages/UpgradePage";
 import AdminPage from "./pages/AdminPage";
 import AllExcusesPage from "./pages/AllExcusesPage";
+import EditExcusePage from "./pages/EditExcusePage";
 import SupportPage from "./pages/SupportPage";
 
 const router = createBrowserRouter([
@@ -25,7 +30,17 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <AdminPage />,
-        children: [{ path: "all-excuses", element: <AllExcusesPage /> }],
+        children: [
+          { index: true, element: <Navigate to="all-excuses" replace /> },
+          {
+            path: "all-excuses",
+            element: <AllExcusesPage />,
+          },
+          {
+            path: "edit/:categoryId/:situationId/:excuseId",
+            element: <EditExcusePage />,
+          },
+        ],
       },
       { path: "support", element: <SupportPage /> },
     ],
