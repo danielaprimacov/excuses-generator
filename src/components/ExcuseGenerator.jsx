@@ -9,8 +9,7 @@ function ExcuseGenerator() {
   const [excuse, setExcuse] = useState(null);
   const [error, setError] = useState("");
 
-  const API_URL = "http://localhost:5000/categories";
-
+  const API_BASE = "http://localhost:5000";
   const toneOptions = [
     "Dramatic",
     "Realistic",
@@ -21,24 +20,47 @@ function ExcuseGenerator() {
   ];
   const formatOptions = ["Slack", "Email", "Text", "SMS", "Phone Call"];
 
+  // Fetch categories, situations, excuses and join them
   const fetchAllExcuses = async () => {
-    const response = await fetch(API_URL);
-    if (!response.ok) throw new Error("Failed to fetch excuses.");
-    const categories = await response.json();
-    return categories.flatMap((category) =>
-      category.situations.flatMap((situation) =>
-        situation.excuses.map((exc) => ({
-          ...exc,
-          situationName: situation.situationName,
-          situationDescription: situation.situationDescription,
-          categoryName: category.categoryName,
-        }))
-      )
+    const [catsRes, sitsRes, excsRes] = await Promise.all([
+      fetch(`${API_BASE}/categories`),
+      fetch(`${API_BASE}/situations`),
+      fetch(`${API_BASE}/excuses`),
+    ]);
+    if (!catsRes.ok || !sitsRes.ok || !excsRes.ok) {
+      throw new Error("Failed to fetch data.");
+    }
+    const [categories, situations, excuses] = await Promise.all([
+      catsRes.json(),
+      sitsRes.json(),
+      excsRes.json(),
+    ]);
+
+    const catMap = new Map(categories.map((cat) => [cat.id, cat.categoryName]));
+    const sitMap = new Map(
+      situations.map((sit) => [
+        sit.id,
+        {
+          name: sit.situationName,
+          desc: sit.situationDescription,
+          categoryId: sit.categoryId,
+        },
+      ])
     );
+
+    return excuses.map((e) => {
+      const sit = sitMap.get(e.situationId) || {};
+      return {
+        ...e,
+        situationName: sit.name,
+        situationDescription: sit.desc,
+        categoryName: catMap.get(sit.categoryId),
+      };
+    });
   };
 
-  const filterExcuses = (all) => {
-    return all.filter((e) => {
+  const filterExcuses = (all) =>
+    all.filter((e) => {
       if (
         criteria.length &&
         !criteria.every((c) => e.characteristics.includes(c))
@@ -55,19 +77,14 @@ function ExcuseGenerator() {
           .filter((w) => w);
         const name = e.situationName.toLowerCase();
         const desc = (e.situationDescription || "").toLowerCase();
-        const matchCount = keywords.reduce((count, word) => {
-          if (name.includes(word) || desc.includes(word)) {
-            return count + 1;
-          }
-          return count;
-        }, 0);
-        if (matchCount < 2) {
-          return false;
-        }
+        const matches = keywords.reduce(
+          (cnt, w) => cnt + (name.includes(w) || desc.includes(w) ? 1 : 0),
+          0
+        );
+        if (matches < 2) return false;
       }
       return true;
     });
-  };
 
   const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
@@ -86,7 +103,9 @@ function ExcuseGenerator() {
     try {
       const all = await fetchAllExcuses();
       const filtered = filterExcuses(all);
-      if (!filtered.length) throw new Error("No matching excuses found.");
+      if (!filtered.length) {
+        throw new Error("No matching excuses found.");
+      }
       setExcuse(pickRandom(filtered));
       setStep(3);
     } catch (err) {

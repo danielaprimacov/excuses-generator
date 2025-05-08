@@ -1,68 +1,63 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Categories.module.css";
 
-const API_URL = "http://localhost:5000/categories";
-
-const fetchAllExcuses = async () => {
-  const res = await fetch(API_URL);
-  if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
-  const data = await res.json();
-
-  // Handle two shapes: { categories: [...] } or direct [...categories]
-  const catsArr = Array.isArray(data.categories)
-    ? data.categories
-    : Array.isArray(data)
-    ? data
-    : [];
-
-  return catsArr.flatMap((cat) => {
-    const situations = Array.isArray(cat.situations) ? cat.situations : [];
-    return situations.flatMap((sit) => {
-      const image = sit.photoUrl || null;
-      return (Array.isArray(sit.excuses) ? sit.excuses : []).map((exc) => ({
-        ...exc,
-        situationName: sit.situationName,
-        categoryName: cat.categoryName,
-        photoUrl: image,
-      }));
-    });
-  });
-};
+const API_URL = "http://localhost:5000";
+const DISPLAY_COUNT = 3;
 
 export default function Categories() {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    (async () => {
+    async function loadData() {
       try {
-        const all = await fetchAllExcuses();
+        // 1) Fetch categories and situations in parallel
+        const [catsRes, sitsRes] = await Promise.all([
+          fetch(`${API_URL}/categories`),
+          fetch(`${API_URL}/situations`),
+        ]);
+        if (!catsRes.ok)
+          throw new Error(`Categories fetch failed (${catsRes.status})`);
+        if (!sitsRes.ok)
+          throw new Error(`Situations fetch failed (${sitsRes.status})`);
+        const [categories, situations] = await Promise.all([
+          catsRes.json(),
+          sitsRes.json(),
+        ]);
 
-        // group & dedupe
-        const grouped = all.reduce(
-          (acc, { categoryName, situationName, photoUrl }) => {
-            acc[categoryName] ??= {};
-            if (!acc[categoryName][situationName]) {
-              acc[categoryName][situationName] = { situationName, photoUrl };
-            }
-            return acc;
-          },
-          {}
+        // 2) Build a map: categoryId → categoryName
+        const catMap = new Map(
+          categories.map((cat) => [cat.id, cat.categoryName])
         );
 
-        const ORDER = ["Family", "Work", "Financial", "Relationship"];
-        const filtered = ORDER.map((name) =>
-          grouped[name]
-            ? { categoryName: name, situations: Object.values(grouped[name]) }
-            : null
-        ).filter(Boolean);
+        // 3) Group situations by categoryName
+        const grouped = situations.reduce((acc, sit) => {
+          const name = catMap.get(sit.categoryId) || "Uncategorized";
+          acc[name] = acc[name] || [];
+          acc[name].push({
+            situationName: sit.situationName,
+            photoUrl: sit.photoUrl,
+          });
+          return acc;
+        }, {});
 
-        setCats(filtered);
+        // 4) Order your categories as desired
+        const ORDER = ["Family", "Work", "Financial", "Relationship"];
+        const ordered = ORDER.reduce((arr, catName) => {
+          if (grouped[catName]) {
+            arr.push({ categoryName: catName, situations: grouped[catName] });
+          }
+          return arr;
+        }, []);
+
+        setCats(ordered);
       } catch (e) {
         console.error(e);
         setError(e.message);
       }
-    })();
+    }
+
+    loadData();
   }, []);
 
   if (error) return <p className={classes.error}>Error: {error}</p>;
@@ -71,40 +66,40 @@ export default function Categories() {
   return (
     <div className={classes.categories}>
       {cats.map(({ categoryName, situations }) => {
-        // ensure at least 3 cards
+        // ensure at least 3 cards per row
         const display =
-          situations.length >= 3
-            ? situations
+          situations.length >= DISPLAY_COUNT
+            ? situations.slice(0, DISPLAY_COUNT)
             : [
                 ...situations,
-                ...Array(3 - situations.length).fill({ placeholder: true }),
+                ...Array.from(
+                  { length: DISPLAY_COUNT - situations.length },
+                  () => ({ placeholder: true })
+                ),
               ];
 
         return (
           <div key={categoryName} className={classes.category}>
             <p>Category: {categoryName}</p>
             <div className={classes.cardRow}>
-              {display.map((item, idx) => {
-                if (item.placeholder) {
-                  // blank placeholder
-                  return (
-                    <div key={`placeholder-${idx}`} className={classes.card} />
-                  );
-                }
-                const { situationName, photoUrl } = item;
-                return (
+              {display.map((item, idx) =>
+                item.placeholder ? (
+                  <div key={`ph-${idx}`} className={classes.card} />
+                ) : (
                   <div
-                    key={situationName}
+                    key={item.situationName}
                     className={classes.card}
                     style={
-                      photoUrl ? { backgroundImage: `url(${photoUrl})` } : {}
+                      item.photoUrl
+                        ? { backgroundImage: `url(${item.photoUrl})` }
+                        : {}
                     }
-                    aria-label={situationName}
+                    aria-label={item.situationName}
                   >
-                    <p className={classes.cardTitle}>{situationName}</p>
+                    <p className={classes.cardTitle}>{item.situationName}</p>
                   </div>
-                );
-              })}
+                )
+              )}
             </div>
           </div>
         );
