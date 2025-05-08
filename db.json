@@ -1467,6 +1467,16 @@
         "Funny",
         "Not Suspicious"
       ]
+    },
+    {
+      "situationId": 101,
+      "excuseDescription": "I’ve been hit with a migraine so bad I can barely see—have to lie down immediately, sorry to miss dinner.",
+      "format": "Text",
+      "characteristics": [
+        "Dramatic",
+        "Realistic"
+      ],
+      "id": 138
     }
   ]
 }

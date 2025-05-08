@@ -15,6 +15,7 @@ import AdminPage from "./pages/AdminPage";
 import AllExcusesPage from "./pages/AllExcusesPage";
 import EditExcusePage from "./pages/EditExcusePage";
 import SupportPage from "./pages/SupportPage";
+import AddNewExcuse from "./components/AddNewExcuse";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: "all-excuses",
             element: <AllExcusesPage />,
+          },
+          {
+            path: "add-excuse",
+            element: <AddNewExcuse />,
           },
           {
             path: "edit/:categoryId/:situationId/:excuseId",

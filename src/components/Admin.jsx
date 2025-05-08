@@ -20,7 +20,7 @@ function Admin() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="add-excuse"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
