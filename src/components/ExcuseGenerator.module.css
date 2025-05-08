@@ -43,13 +43,6 @@ select:focus {
   outline: none;
 }
 
-.buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
 button {
   flex: 1;
   padding: 0.75rem;
@@ -61,8 +54,20 @@ button {
   transition: background 0.2s, transform 0.3s;
 }
 
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .submit {
   background: var(--color-primary-500);
+  color: #fff;
+}
+
+.surprise {
+  background: var(--color-gray-600);
   color: #fff;
 }
 
@@ -71,15 +76,10 @@ button {
   transform: scale(1.05);
 }
 
-.surprise {
-  background: var(--color-gray-600);
-  color: #fff;
-}
-
 .excuse {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: #ecf0f1;
+  background: var(--color-primary-200);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
@@ -172,11 +172,6 @@ button {
   overflow: auto;
 }
 
-.error {
-  color: #e74c3c;
-  margin-top: 0.5rem;
-}
-
 .modalButtons {
   display: flex;
   justify-content: flex-end;
@@ -202,13 +197,19 @@ textarea {
   overflow: auto;
 }
 
-/* New wizard-specific styles */
+/* Wizard-specific */
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.choice-button,
+.format-button {
+  display: flex;
+  gap: 5px;
 }
 
 .choiceButton {
@@ -261,13 +262,15 @@ textarea {
   min-height: 100px;
   padding: 0.75rem 1rem;
   border: 1px solid #bdc3c7;
+  background-color: #fff;
+  color: #2c3e50;
   border-radius: 6px;
-  resize: vertical;
   font-size: 1rem;
   margin: 1rem 0;
 }
 
 .submitBtn {
+  margin-top: 2rem;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   border: none;
@@ -280,4 +283,11 @@ textarea {
 
 .submitBtn:hover {
   transform: scale(1.05);
+}
+
+.excuse-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
