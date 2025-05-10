@@ -1,33 +1,20 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "./AuthContext";
+import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
 
 import logo from "../assets/images/logo.png";
 import classes from "./Navigation.module.css";
 
 function Navigation() {
-  const [showModal, setShowModal] = useState(false);
-  const [adminPassword, setAdminPassword] = useState("");
-  const [entryError, setEntryError] = useState("");
+  const { user, logout } = useContext(AuthContext);
+  const [mode, setMode] = useState(null); // 'login' | 'signup'
 
   const navigate = useNavigate();
 
-  const openModal = () => setShowModal(true);
-  const closeModal = () => {
-    setShowModal(false);
-    setAdminPassword("");
-    setEntryError("");
-  };
-
-  const submitAdminEntry = (e) => {
-    e.preventDefault();
-    const CORRECT = import.meta.env.VITE_ADMIN_PASSWORD || "letmein";
-    if (adminPassword === CORRECT) {
-      closeModal();
-      navigate("/admin");
-    } else {
-      setEntryError("Incorrect password");
-    }
-  };
+  const open = (m) => setMode(m);
+  const close = () => setMode(null);
 
   return (
     <header className={classes.header}>
@@ -46,7 +33,6 @@ function Navigation() {
               <img src={logo} alt="Logo" className={classes.logo} />
             </NavLink>
           </li>
-          {/* Other nav links grouped on the right */}
           <div className={classes.navItems}>
             <li>
               <NavLink
@@ -83,55 +69,43 @@ function Navigation() {
             <li>
               <div className={classes.search}>Search</div>
             </li>
-            <li>
-              <NavLink
-                to="/admin"
-                className={({ isActive }) => (isActive ? classes.active : "")}
-                onClick={(e) => {
-                  e.preventDefault(); // prevent immediate navigation
-                  openModal();
-                }}
-              >
-                Admin
-              </NavLink>
-            </li>
-
-            {showModal && (
-              <div className={classes.modalOverlay}>
-                <div className={classes.modal}>
-                  <form onSubmit={submitAdminEntry}>
-                    <label className={classes.label}>
-                      You need to enter the admin password:
-                      <input
-                        type="password"
-                        value={adminPassword}
-                        onChange={(e) => setAdminPassword(e.target.value)}
-                        className={classes.input}
-                        required
-                      />
-                    </label>
-                    {entryError && (
-                      <p className={classes.error}>{entryError}</p>
-                    )}
-                    <div className={classes.modalButtons}>
-                      <button type="submit" className={classes["submit-btn"]}>
-                        Enter
-                      </button>
-                      <button
-                        type="button"
-                        onClick={closeModal}
-                        className={classes["cancel-btn"]}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+            {user ? (
+              <>
+                <li>Hello, {user.username}</li>
+                <li>
+                  <button
+                    onClick={() => {
+                      logout();
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </button>
+                </li>
+                {user.role === "admin" && (
+                  <li>
+                    <NavLink to="/admin">Admin Dashboard</NavLink>
+                  </li>
+                )}
+              </>
+            ) : (
+              <>
+                <li>
+                  <button onClick={() => open("login")}>Login</button>
+                </li>
+                <li>
+                  <button onClick={() => open("signup")}>Create Account</button>
+                </li>
+              </>
             )}
           </div>
         </ul>
       </nav>
+
+      {mode === "login" && <LoginModal onClose={close} />}
+      {mode === "signup" && (
+        <SignupModal onClose={close} onSwitch={() => setMode("login")} />
+      )}
     </header>
   );
 }
