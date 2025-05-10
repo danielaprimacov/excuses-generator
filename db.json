@@ -19,6 +19,14 @@
     {
       "id": 5,
       "categoryName": "Health"
+    },
+    {
+      "id": 6,
+      "categoryName": "Travel"
+    },
+    {
+      "id": 7,
+      "categoryName": "Education"
     }
   ],
   "situations": [
@@ -87,24 +95,52 @@
     },
     {
       "id": 125,
-      "categoryId": 4,
+      "categoryId": 5,
       "situationName": "Doctor Appointment Rescheduled",
       "situationDescription": "You need to postpone your medical appointment.",
       "photoUrl": "https://images.unsplash.com/photo-1617056599121-58f9b4f5bdb7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
     },
     {
       "id": 201,
-      "categoryId": 4,
+      "categoryId": 5,
       "situationName": "Overdraft Fee Applied",
       "situationDescription": "You got hit with an overdraft fee and need to explain.",
       "photoUrl": "https://images.unsplash.com/photo-1580281658629-235c5ece56f8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
     },
     {
       "id": 205,
-      "categoryId": 4,
+      "categoryId": 5,
       "situationName": "Forgot Medication",
       "situationDescription": "You skipped your daily prescription and need to explain to your doctor.",
       "photoUrl": "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
+    },
+    {
+      "id": 301,
+      "categoryId": 6,
+      "situationName": "Flight Delay",
+      "situationDescription": "Your flight was delayed and you need to notify someone.",
+      "photoUrl": "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
+    },
+    {
+      "id": 305,
+      "categoryId": 6,
+      "situationName": "Lost Luggage",
+      "situationDescription": "Your baggage didn’t arrive—explaining why you’re unprepared.",
+      "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
+    },
+    {
+      "id": 401,
+      "categoryId": 7,
+      "situationName": "Missed Assignment Deadline",
+      "situationDescription": "You didn’t submit your homework on time.",
+      "photoUrl": "https://images.unsplash.com/photo-1600164256252-6b2b3cd92bf8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
+    },
+    {
+      "id": 405,
+      "categoryId": 7,
+      "situationName": "Late to Class",
+      "situationDescription": "You arrived late to your lecture.",
+      "photoUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
     }
   ],
   "excuses": [
@@ -1477,6 +1513,496 @@
         "Realistic"
       ],
       "id": 138
+    },
+    {
+      "id": 139,
+      "situationId": 301,
+      "excuseDescription": "Air traffic control held us an extra hour—apologies for the delay!",
+      "format": "Email",
+      "characteristics": [
+        "Professional",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 140,
+      "situationId": 301,
+      "excuseDescription": "Our connecting flight was late—this gate change slowed us down.",
+      "format": "Slack",
+      "characteristics": [
+        "Realistic",
+        "Technical"
+      ]
+    },
+    {
+      "id": 141,
+      "situationId": 301,
+      "excuseDescription": "Crew duty time limits required us to wait for a fresh team before departure.",
+      "format": "SMS",
+      "characteristics": [
+        "Professional",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 142,
+      "situationId": 301,
+      "excuseDescription": "Heavy fog at our destination reduced visibility—air traffic control has us on hold.",
+      "format": "Email",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 143,
+      "situationId": 301,
+      "excuseDescription": "Routine maintenance flagged a minor hydraulic issue and technicians are resolving it now.",
+      "format": "Slack",
+      "characteristics": [
+        "Technical",
+        "Professional"
+      ]
+    },
+    {
+      "id": 144,
+      "situationId": 301,
+      "excuseDescription": "De-icing trucks were delayed by a backlog—our turn finally came but pushed us behind schedule.",
+      "format": "Text",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 145,
+      "situationId": 301,
+      "excuseDescription": "A fellow passenger had a medical emergency; we waited on the tarmac for paramedics.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Dramatic",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 146,
+      "situationId": 301,
+      "excuseDescription": "The airport coffee machine went on strike until we met its espresso quota—barista negotiations are still ongoing!",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 147,
+      "situationId": 301,
+      "excuseDescription": "My suitcase joined a conga line down the terminal and I’ve been chasing it ever since.",
+      "format": "SMS",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 148,
+      "situationId": 301,
+      "excuseDescription": "The gate agent challenged me to a dance-off for priority boarding—I’m still perfecting my moves.",
+      "format": "Email",
+      "characteristics": [
+        "Funny",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 149,
+      "situationId": 301,
+      "excuseDescription": "My GPS in the airport sent me to the wrong terminal and I ended up exploring the ‘lost and found’ jungle.",
+      "format": "Slack",
+      "characteristics": [
+        "Funny",
+        "Technical"
+      ]
+    },
+    {
+      "id": 150,
+      "situationId": 301,
+      "excuseDescription": "A flock of very determined seagulls staged a protest on the runway—we’re waiting on animal control.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 151,
+      "situationId": 305,
+      "excuseDescription": "Looks like my bag went to the wrong carousel—filing a report now.",
+      "format": "Text",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 152,
+      "situationId": 305,
+      "excuseDescription": "Customs held my luggage for extra inspection—sorry I’m running late.",
+      "format": "Email",
+      "characteristics": [
+        "Realistic",
+        "Technical"
+      ]
+    },
+    {
+      "id": 153,
+      "situationId": 305,
+      "excuseDescription": "The airline misplaced my bag tag and my luggage is on a joyride to who-knows-where—I’m working with lost & found now.",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 154,
+      "situationId": 305,
+      "excuseDescription": "My suitcase got zip-locked shut by TSA for a random security check—I’m waiting for them to clear it.",
+      "format": "SMS",
+      "characteristics": [
+        "Technical",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 155,
+      "situationId": 305,
+      "excuseDescription": "A fellow passenger’s bag was identical to mine and we swapped them by accident—I’m sorting it out at the carousel.",
+      "format": "Email",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 156,
+      "situationId": 305,
+      "excuseDescription": "My luggage took an unscheduled detour through three other countries before realizing the mistake—I’ve filed an international alert.",
+      "format": "Slack",
+      "characteristics": [
+        "Dramatic",
+        "Funny"
+      ]
+    },
+    {
+      "id": 157,
+      "situationId": 305,
+      "excuseDescription": "The baggage handlers are treating my bag like a VIP—it’s still in the lounge and won’t join the main party until later.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 158,
+      "situationId": 305,
+      "excuseDescription": "My suitcase decided to go on a solo vacation and is currently lounging poolside in Miami—tracking its Instagram now.",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 159,
+      "situationId": 305,
+      "excuseDescription": "I caught my bag trying to sneak onto a cargo ship bound for Antarctica—airline’s issuing a rescue mission.",
+      "format": "SMS",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 160,
+      "situationId": 305,
+      "excuseDescription": "Customs stamped ‘VIP only’ on my luggage and it’s sipping champagne in the First Class lounge.",
+      "format": "Email",
+      "characteristics": [
+        "Funny",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 161,
+      "situationId": 305,
+      "excuseDescription": "My bag joined a flash mob in baggage claim and I’m still negotiating its release choreography.",
+      "format": "Slack",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 162,
+      "situationId": 305,
+      "excuseDescription": "The baggage carousel has unionized and is on strike until they get better tips—my bag’s picketing right now.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 163,
+      "situationId": 401,
+      "excuseDescription": "I misunderstood the due date—thought it was next week!",
+      "format": "Email",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 164,
+      "situationId": 401,
+      "excuseDescription": "My computer crashed while saving—lost half my work.",
+      "format": "Text",
+      "characteristics": [
+        "Technical",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 165,
+      "situationId": 401,
+      "excuseDescription": "My pet goldfish swam into my laptop bag and knocked my flash drive into the filter—still fishing files out!",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Technical"
+      ]
+    },
+    {
+      "id": 166,
+      "situationId": 401,
+      "excuseDescription": "I volunteered at a last-minute charity event and got so caught up helping that I lost track of all deadlines.",
+      "format": "Email",
+      "characteristics": [
+        "Empathy",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 167,
+      "situationId": 401,
+      "excuseDescription": "I sneezed so hard while dusting my desk that I knocked my notes off and can’t find a single page.",
+      "format": "SMS",
+      "characteristics": [
+        "Dramatic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 168,
+      "situationId": 401,
+      "excuseDescription": "I thought the submission portal closed at midnight, but it actually shut at 8 PM—my bad on the timing!",
+      "format": "Slack",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 169,
+      "situationId": 401,
+      "excuseDescription": "I got stuck in an elevator on campus—just got out and logged in to submit, but it’s too late now.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Dramatic",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 170,
+      "situationId": 401,
+      "excuseDescription": "My laptop thought it was April Fools’ Day and hid my assignment in a prank folder—I’ve been searching ever since!",
+      "format": "Email",
+      "characteristics": [
+        "Funny",
+        "Technical"
+      ]
+    },
+    {
+      "id": 171,
+      "situationId": 401,
+      "excuseDescription": "My hamster chewed through my charger cable overnight—my computer conked out before I could submit.",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 172,
+      "situationId": 401,
+      "excuseDescription": "I taught my parrot to hand in my assignment, but it flew off with it to the park—still trying to negotiate retrieval!",
+      "format": "SMS",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 173,
+      "situationId": 401,
+      "excuseDescription": "I tried submitting via voice-to-text, but my dog’s enthusiastic barking got transcribed instead of my essay.",
+      "format": "Slack",
+      "characteristics": [
+        "Funny",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 173,
+      "situationId": 401,
+      "excuseDescription": "I tried submitting via voice-to-text, but my dog’s enthusiastic barking got transcribed instead of my essay.",
+      "format": "Slack",
+      "characteristics": [
+        "Funny",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 174,
+      "situationId": 401,
+      "excuseDescription": "My smart assistant misheard 'upload assignment' as 'undo assignment' and reversed all my progress—classic tech fail.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Technical"
+      ]
+    },
+    {
+      "id": 175,
+      "situationId": 405,
+      "excuseDescription": "My bus broke down on the way—jumped on a taxi but got delayed.",
+      "format": "Slack",
+      "characteristics": [
+        "Realistic",
+        "Technical"
+      ]
+    },
+    {
+      "id": 176,
+      "situationId": 405,
+      "excuseDescription": "Traffic was backed up due to an accident—sorry I couldn’t make it on time.",
+      "format": "Text",
+      "characteristics": [
+        "Realistic",
+        "Empathy"
+      ]
+    },
+    {
+      "id": 177,
+      "situationId": 405,
+      "excuseDescription": "My alarm went off but I hit snooze one too many times—woke up in a panic when I saw the time!",
+      "format": "Text",
+      "characteristics": [
+        "Realistic",
+        "Not Suspicious"
+      ]
+    },
+    {
+      "id": 178,
+      "situationId": 405,
+      "excuseDescription": "I accidentally wandered into the wrong lecture hall and realized it halfway through—by then the bell had already rung.",
+      "format": "SMS",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 179,
+      "situationId": 405,
+      "excuseDescription": "My roommate locked me out of our dorm by mistake—I had to wait for them to find the spare key.",
+      "format": "Email",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 180,
+      "situationId": 405,
+      "excuseDescription": "I tripped over my untied shoelace on the stairs and twisted my ankle—had to catch my breath before I could continue.",
+      "format": "Slack",
+      "characteristics": [
+        "Realistic",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 181,
+      "situationId": 405,
+      "excuseDescription": "My pet parakeet flew off with my lecture notes and I spent half the morning coaxing it back.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 182,
+      "situationId": 405,
+      "excuseDescription": "I tried sprinting to class but my shoelaces betrayed me—face-planted right outside the lecture hall.",
+      "format": "Text",
+      "characteristics": [
+        "Funny",
+        "Dramatic"
+      ]
+    },
+    {
+      "id": 183,
+      "situationId": 405,
+      "excuseDescription": "My backpack zipper gave up the ghost and spilled all my things—spent ten minutes herding pens and papers back in.",
+      "format": "SMS",
+      "characteristics": [
+        "Funny",
+        "Realistic"
+      ]
+    },
+    {
+      "id": 184,
+      "situationId": 405,
+      "excuseDescription": "I mistook my alarm tone for my cat’s meow and spent five minutes searching for a phantom feline.",
+      "format": "Email",
+      "characteristics": [
+        "Funny",
+        "Technical"
+      ]
+    },
+    {
+      "id": 185,
+      "situationId": 405,
+      "excuseDescription": "My neighbor decided to practice tuba at 8 AM—was stuck in a brass duet until I could escape the noise.",
+      "format": "Slack",
+      "characteristics": [
+        "Funny",
+        "Evoking Empathy"
+      ]
+    },
+    {
+      "id": 186,
+      "situationId": 405,
+      "excuseDescription": "I got trapped in a crowd of tourists taking selfies on campus—I’m basically a reluctant photo bomb.",
+      "format": "Phone Call",
+      "characteristics": [
+        "Funny",
+        "Not Suspicious"
+      ]
     }
   ]
 }
