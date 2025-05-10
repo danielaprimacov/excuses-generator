@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "./AllExcuses.module.css";
 
-const API_URL = "http://localhost:5000";
+import {
+  fetchCategories,
+  fetchExcuses,
+  fetchSituations,
+  deleteExcuse,
+} from "../utils/api";
+import classes from "./AllExcuses.module.css";
 
 export default function AllExcuses() {
   const [excuses, setExcuses] = useState([]);
@@ -16,26 +21,14 @@ export default function AllExcuses() {
   useEffect(() => {
     async function loadData() {
       try {
-        // Fetch all three resources in parallel
-        const [catsRes, sitsRes, excsRes] = await Promise.all([
-          fetch(`${API_URL}/categories`),
-          fetch(`${API_URL}/situations`),
-          fetch(`${API_URL}/excuses`),
-        ]);
-        if (!catsRes.ok)
-          throw new Error(`Categories fetch failed (${catsRes.status})`);
-        if (!sitsRes.ok)
-          throw new Error(`Situations fetch failed (${sitsRes.status})`);
-        if (!excsRes.ok)
-          throw new Error(`Excuses fetch failed (${excsRes.status})`);
-
+        // kick off all three requests in parallel
         const [categories, situations, excusesData] = await Promise.all([
-          catsRes.json(),
-          sitsRes.json(),
-          excsRes.json(),
+          fetchCategories(),
+          fetchSituations(),
+          fetchExcuses(),
         ]);
 
-        // Build lookup maps
+        // build lookup maps
         const catMap = new Map(categories.map((c) => [c.id, c.categoryName]));
         const sitMap = new Map(
           situations.map((s) => [
@@ -43,18 +36,17 @@ export default function AllExcuses() {
             {
               situationName: s.situationName,
               categoryId: s.categoryId,
-              situationNameRaw: s.situationName,
             },
           ])
         );
 
-        // Flatten and enrich
+        // enrich each excuse
         const all = excusesData.map((e) => {
           const sit = sitMap.get(e.situationId) || {};
           return {
             ...e,
             categoryId: sit.categoryId,
-            situationName: sit.situationNameRaw,
+            situationName: sit.situationName || "Unknown",
             categoryName: catMap.get(sit.categoryId) || "Uncategorized",
           };
         });
@@ -95,13 +87,13 @@ export default function AllExcuses() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Really delete?")) return;
+
     try {
       const { categoryId, situationId } = selectedExcuse;
-      const res = await fetch(
-        `${API_URL}/categories/${categoryId}/situations/${situationId}/excuses/${id}`,
-        { method: "DELETE" }
-      );
-      if (!res.ok) throw new Error(`Delete failed: ${res.status}`);
+
+      // call the helper function
+      await deleteExcuse(categoryId, situationId, id);
+
       setExcuses((prev) => prev.filter((e) => e.id !== id));
       handleClose();
     } catch (err) {

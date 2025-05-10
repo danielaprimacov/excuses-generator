@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import {
+  fetchCategories,
+  fetchSituations,
+  createCategory,
+  createSituation,
+  createExcuse,
+} from "../utils/api";
 import classes from "./AddNewExcuse.module.css";
-
-const API_URL = "http://localhost:5000";
 
 function AddNewExcuse() {
   const navigate = useNavigate();
@@ -25,20 +30,12 @@ function AddNewExcuse() {
   useEffect(() => {
     async function loadLookups() {
       try {
-        const [catsRes, sitsRes] = await Promise.all([
-          fetch(`${API_URL}/categories`),
-          fetch(`${API_URL}/situations`),
+        const [cats, sits] = await Promise.all([
+          fetchCategories(),
+          fetchSituations(),
         ]);
-        if (!catsRes.ok)
-          throw new Error(`Categories fetch failed (${catsRes.status})`);
-        if (!sitsRes.ok)
-          throw new Error(`Situations fetch failed (${sitsRes.status})`);
-        const [catsData, sitsData] = await Promise.all([
-          catsRes.json(),
-          sitsRes.json(),
-        ]);
-        setCategories(catsData);
-        setSituations(sitsData);
+        setCategories(cats);
+        setSituations(sits);
       } catch (err) {
         console.error(err);
         setError(err.message);
@@ -49,7 +46,6 @@ function AddNewExcuse() {
     loadLookups();
   }, []);
 
-  // filter only the situations belonging to the chosen category
   const filteredSituations = situations.filter(
     (s) => String(s.categoryId) === form.categoryChoice
   );
@@ -59,12 +55,10 @@ function AddNewExcuse() {
     setForm((prev) => {
       const next = { ...prev, [name]: value };
       if (name === "categoryChoice") {
-        // reset situation whenever category changes
         next.situationChoice = "";
         next.newSituationName = "";
       }
       if (name === "situationChoice") {
-        // clear any typed‐in newSituationName
         next.newSituationName = "";
       }
       return next;
@@ -78,37 +72,27 @@ function AddNewExcuse() {
 
     try {
       // 1) maybe create new category
-      let categoryId;
-      if (form.categoryChoice === "new") {
-        const res = await fetch(`${API_URL}/categories`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ categoryName: form.newCategoryName.trim() }),
-        });
-        if (!res.ok) throw new Error(`Create category failed (${res.status})`);
-        const data = await res.json();
-        categoryId = data.id;
+      let categoryId = form.categoryChoice;
+      if (categoryId === "new") {
+        const cat = await createCategory(form.newCategoryName.trim());
+        categoryId = cat.id;
       } else {
-        categoryId = parseInt(form.categoryChoice, 10);
+        categoryId = parseInt(categoryId, 10);
       }
 
       // 2) maybe create new situation
-      let situationId;
-      if (form.situationChoice === "new") {
-        const name = form.newSituationName.trim();
-        const res = await fetch(`${API_URL}/situations`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ categoryId, situationName: name }),
-        });
-        if (!res.ok) throw new Error(`Create situation failed (${res.status})`);
-        const data = await res.json();
-        situationId = data.id;
+      let situationId = form.situationChoice;
+      if (situationId === "new") {
+        const sit = await createSituation(
+          categoryId,
+          form.newSituationName.trim()
+        );
+        situationId = sit.id;
       } else {
-        situationId = parseInt(form.situationChoice, 10);
+        situationId = parseInt(situationId, 10);
       }
 
-      // 3) finally create the excuse
+      // 3) create the excuse
       const payload = {
         situationId,
         excuseDescription: form.excuseDescription.trim(),
@@ -116,14 +100,9 @@ function AddNewExcuse() {
         characteristics: form.characteristics
           .split(",")
           .map((s) => s.trim())
-          .filter((s) => s),
+          .filter(Boolean),
       };
-      const res = await fetch(`${API_URL}/excuses`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`Save excuse failed (${res.status})`);
+      await createExcuse(payload);
 
       navigate("/admin/all-excuses");
     } catch (err) {

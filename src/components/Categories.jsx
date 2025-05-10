@@ -1,36 +1,28 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
+import { fetchCategories, fetchSituations } from "../utils/api";
 import classes from "./Categories.module.css";
 
-const API_URL = "http://localhost:5000";
 const DISPLAY_COUNT = 3;
+const ORDER = ["Family", "Work", "Financial", "Relationship"];
 
 export default function Categories() {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
       try {
-        // 1) Fetch categories and situations in parallel
-        const [catsRes, sitsRes] = await Promise.all([
-          fetch(`${API_URL}/categories`),
-          fetch(`${API_URL}/situations`),
-        ]);
-        if (!catsRes.ok)
-          throw new Error(`Categories fetch failed (${catsRes.status})`);
-        if (!sitsRes.ok)
-          throw new Error(`Situations fetch failed (${sitsRes.status})`);
         const [categories, situations] = await Promise.all([
-          catsRes.json(),
-          sitsRes.json(),
+          fetchCategories(),
+          fetchSituations(),
         ]);
 
-        // 2) Build a map: categoryId → categoryName
-        const catMap = new Map(
-          categories.map((cat) => [cat.id, cat.categoryName])
-        );
+        // Map categoryId → categoryName
+        const catMap = new Map(categories.map((c) => [c.id, c.categoryName]));
 
-        // 3) Group situations by categoryName
+        // Group situations by categoryName
         const grouped = situations.reduce((acc, sit) => {
           const name = catMap.get(sit.categoryId) || "Uncategorized";
           acc[name] = acc[name] || [];
@@ -41,8 +33,7 @@ export default function Categories() {
           return acc;
         }, {});
 
-        // 4) Order your categories as desired
-        const ORDER = ["Family", "Work", "Financial", "Relationship"];
+        // Order and shape for rendering
         const ordered = ORDER.reduce((arr, catName) => {
           if (grouped[catName]) {
             arr.push({ categoryName: catName, situations: grouped[catName] });
@@ -54,14 +45,15 @@ export default function Categories() {
       } catch (e) {
         console.error(e);
         setError(e.message);
+      } finally {
+        setLoading(false);
       }
     }
-
     loadData();
   }, []);
 
+  if (loading) return <p className={classes.loading}>Loading…</p>;
   if (error) return <p className={classes.error}>Error: {error}</p>;
-  if (!cats.length) return <p>Loading…</p>;
 
   return (
     <div className={classes.categories}>

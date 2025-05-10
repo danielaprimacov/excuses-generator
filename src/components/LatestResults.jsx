@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import classes from "./LatestResults.module.css";
+import { useEffect, useRef, useState } from "react";
 
-const API_URL = "http://localhost:5000";
+import {
+  fetchCategories,
+  fetchSituations,
+  fetchLatestExcuses,
+} from "../utils/api";
+import classes from "./LatestResults.module.css";
 
 function LatestResults() {
   const sliderRef = useRef(null);
@@ -10,68 +14,63 @@ function LatestResults() {
   useEffect(() => {
     let mounted = true;
 
-    async function fetchAndCombine() {
+    async function load() {
       try {
-        // 1) Fetch all three resources in parallel
-        const [catsRes, sitsRes, excsRes] = await Promise.all([
-          fetch(`${API_URL}/categories`),
-          fetch(`${API_URL}/situations`),
-          fetch(`${API_URL}/excuses?_sort=id&_order=desc`), // already sorted newest first
-        ]);
+        // 1) Fetch lookups + latest excuses in parallel
         const [categories, situations, excuses] = await Promise.all([
-          catsRes.json(),
-          sitsRes.json(),
-          excsRes.json(),
+          fetchCategories(),
+          fetchSituations(),
+          fetchLatestExcuses(),
         ]);
 
         if (!mounted) return;
 
         // 2) Build lookup maps
         const categoryMap = new Map(
-          categories.map((cat) => [cat.id, cat.categoryName])
+          categories.map((c) => [c.id, c.categoryName])
         );
         const situationMap = new Map(
-          situations.map((sit) => [
-            sit.id,
+          situations.map((s) => [
+            s.id,
             {
-              name: sit.situationName,
-              photoUrl: sit.photoUrl,
-              categoryId: sit.categoryId,
+              name: s.situationName,
+              photoUrl: s.photoUrl,
+              categoryId: s.categoryId,
             },
           ])
         );
 
-        // 3) Enrich each excuse with its situation+category
-        const all = excuses.map((exc) => {
-          const sit = situationMap.get(exc.situationId) || {};
+        // 3) Enrich excuses
+        const enriched = excuses.map((e) => {
+          const sit = situationMap.get(e.situationId) || {};
           return {
-            id: exc.id,
-            excuseDescription: exc.excuseDescription,
-            situationId: exc.situationId,
+            id: e.id,
+            excuseDescription: e.excuseDescription,
+            situationId: e.situationId,
             situationName: sit.name,
             photoUrl: sit.photoUrl,
             categoryName: categoryMap.get(sit.categoryId),
           };
         });
 
-        // 4) Pick the first 7, skipping duplicates by situationId
+        // 4) Pick first 7 unique-by-situation
         const picked = [];
         const seen = new Set();
-        for (const exc of all) {
+        for (const ex of enriched) {
           if (picked.length >= 7) break;
-          if (!seen.has(exc.situationId)) {
-            picked.push(exc);
-            seen.add(exc.situationId);
+          if (!seen.has(ex.situationId)) {
+            picked.push(ex);
+            seen.add(ex.situationId);
           }
         }
 
         setCards(picked);
       } catch (err) {
-        console.error("Failed to load latest excuses:", err);
+        console.error("Failed to load latest results:", err);
       }
     }
 
-    fetchAndCombine();
+    load();
     return () => {
       mounted = false;
     };
