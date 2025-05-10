@@ -20,7 +20,7 @@ export default function SignupModal({ onClose, onSwitch }) {
   return (
     <div className={classes.modalOverlay}>
       <div className={classes.modal}>
-        <h2>Create Account</h2>
+        <h1>Create Account</h1>
         <form onSubmit={submit}>
           <label>
             Username
@@ -41,14 +41,20 @@ export default function SignupModal({ onClose, onSwitch }) {
           </label>
           {error && <p className={classes.error}>{error}</p>}
           <div className={classes.modalButtons}>
-            <button type="submit">Sign Up</button>
-            <button type="button" onClick={onSwitch}>
-              Already have an account?
+            <button className={classes["submit-btn"]} type="submit">
+              Sign Up
             </button>
-            <button type="button" onClick={onClose}>
+            <button
+              className={classes["cancel-btn"]}
+              type="button"
+              onClick={onClose}
+            >
               Cancel
             </button>
           </div>
+          <button className={classes["existing-acc-btn"]} type="button" onClick={onSwitch}>
+            Already have an account?
+          </button>
         </form>
       </div>
     </div>
