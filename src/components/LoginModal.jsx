@@ -20,7 +20,7 @@ export default function LoginModal({ onClose }) {
   return (
     <div className={classes.modalOverlay}>
       <div className={classes.modal}>
-        <h2>Login</h2>
+        <h1>Login</h1>
         <form onSubmit={submit}>
           <label>
             Username
@@ -41,8 +41,8 @@ export default function LoginModal({ onClose }) {
           </label>
           {error && <p className={classes.error}>{error}</p>}
           <div className={classes.modalButtons}>
-            <button type="submit">Login</button>
-            <button type="button" onClick={onClose}>
+            <button className={classes["submit-btn"]} type="submit">Login</button>
+            <button className={classes["cancel-btn"]} type="button" onClick={onClose}>
               Cancel
             </button>
           </div>
