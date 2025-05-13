@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -7,6 +8,9 @@ import {
   fetchSituations,
   deleteExcuse,
 } from "../utils/api";
+
+import loadingAnimation from "../assets/animations/loading.json";
+
 import classes from "./AllExcuses.module.css";
 
 export default function AllExcuses() {
@@ -63,7 +67,17 @@ export default function AllExcuses() {
     loadData();
   }, []);
 
-  if (loading) return <p className={classes.loading}>Loading excuses…</p>;
+  if (loading) {
+    return (
+      <div className={classes.loading}>
+        <Lottie
+          animationData={loadingAnimation}
+          loop={true}
+          style={{ width: 450, height: 450 }}
+        />
+      </div>
+    );
+  }
   if (error) return <p className={classes.error}>Error: {error}</p>;
 
   const categoryOptions = [

@@ -68,9 +68,9 @@ function Navigation() {
             </li>
             {user ? (
               <>
-                <li>Hello, {user.username}</li>
                 <li>
-                  <button className={classes["logout-btn"]}
+                  <button
+                    className={classes["logout-btn"]}
                     onClick={() => {
                       logout();
                       navigate("/");
@@ -88,10 +88,20 @@ function Navigation() {
             ) : (
               <>
                 <li>
-                  <button className={classes["login-btn"]} onClick={() => open("login")}>Login</button>
+                  <button
+                    className={classes["login-btn"]}
+                    onClick={() => open("login")}
+                  >
+                    Login
+                  </button>
                 </li>
                 <li>
-                  <button className={classes["logout-btn"]} onClick={() => open("signup")}>Create Account</button>
+                  <button
+                    className={classes["logout-btn"]}
+                    onClick={() => open("signup")}
+                  >
+                    Sign up
+                  </button>
                 </li>
               </>
             )}
