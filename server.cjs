@@ -8,6 +8,7 @@ server.use(jsonServer.rewriter(routes));
 server.use(middlewares);
 server.use(router);
 
-server.listen(5000, () => {
-  console.log("JSON-Server listening on http://localhost:5000");
+const port = process.env.PORT || 5000;
+server.listen(port, () => {
+  console.log(`JSON-Server listening on http://localhost:${port}`);
 });
