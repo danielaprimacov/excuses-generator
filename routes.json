@@ -1,4 +1,0 @@
-{
-  "/categories/:categoryId/situations/:situationId/excuses/:excuseId": "/excuses/:excuseId",
-  "/categories/:categoryId/situations/:situationId/excuses":      "/excuses?categoryId=:categoryId&situationId=:situationId"
-}
