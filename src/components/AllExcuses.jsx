@@ -34,7 +34,7 @@ export default function AllExcuses() {
           situations.map((s) => [
             s.id,
             {
-              situationName: s.situationName,
+              situationName: s.situationDescription,
               categoryId: s.categoryId,
             },
           ])
