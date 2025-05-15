@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import classes from "./Headline.module.css";
 
-const words = ["family", "work", "friends"];
+const words = ["family", "work", "friends", "partner"];
 
 function Headline() {
   const [index, setIndex] = useState(0);

@@ -10,9 +10,9 @@ import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
 import ExcusePage from "./pages/ExcusePage";
 import ReviewPage from "./pages/ReviewPage";
-import UpgradePage from "./pages/UpgradePage";
 import AllExcusesPage from "./pages/AllExcusesPage";
 import EditExcusePage from "./pages/EditExcusePage";
+import AdminStatistics from "./components/AdminStatistics";
 import SupportPage from "./pages/SupportPage";
 import AddNewExcuse from "./components/AddNewExcuse";
 import { AuthProvider } from "./components/AuthContext";
@@ -28,7 +28,6 @@ const router = createBrowserRouter([
       { path: "about", element: <AboutPage /> },
       { path: "excuses", element: <ExcusePage /> },
       { path: "reviews", element: <ReviewPage /> },
-      { path: "upgrade", element: <UpgradePage /> },
       { path: "support", element: <SupportPage /> },
     ],
   },
@@ -44,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "add-excuse",
         element: <AddNewExcuse />,
+      },
+      {
+        path: "statistics",
+        element: <AdminStatistics />,
+      },
+      {
+        path: "reviews",
+        element: <ReviewPage />,
       },
       {
         path: "edit/:categoryId/:situationId/:excuseId",

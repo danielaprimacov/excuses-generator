@@ -52,14 +52,6 @@ function Navigation() {
             </li>
             <li>
               <NavLink
-                to="/upgrade"
-                className={({ isActive }) => (isActive ? classes.active : "")}
-              >
-                Upgrade
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/support"
                 className={({ isActive }) => (isActive ? classes.active : "")}
               >

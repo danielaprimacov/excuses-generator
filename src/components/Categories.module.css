@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 2rem;
+  padding-left: 120px;
   margin-bottom: 50px;
   background-color: var(--color-primary-700);
 }

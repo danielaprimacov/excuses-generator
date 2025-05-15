@@ -50,7 +50,7 @@ function Admin() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="statistics"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -60,7 +60,7 @@ function Admin() {
             </li>
             <li>
               <NavLink
-                to="/reviews"
+                to="reviews"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
