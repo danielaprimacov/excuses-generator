@@ -48,9 +48,19 @@ export function createExcuse(payload) {
   });
 }
 
-export function deleteExcuse(categoryId, situationId, excuseId) {
-  return request(
-    `/categories/${categoryId}/situations/${situationId}/excuses/${excuseId}`,
-    { method: "DELETE" }
-  );
+export function fetchExcuse(id) {
+  return request(`/excuses/${id}`);
+}
+
+export function deleteExcuse(excuseId) {
+  return request(`/excuses/${excuseId}`, {
+    method: "DELETE",
+  });
+}
+
+export function updateExcuse(id, payload) {
+  return request(`/excuses/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
 }

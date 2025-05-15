@@ -101,13 +101,8 @@ export default function AllExcuses() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Really delete?")) return;
-
     try {
-      const { categoryId, situationId } = selectedExcuse;
-
-      // call the helper function
-      await deleteExcuse(categoryId, situationId, id);
-
+      await deleteExcuse(id);
       setExcuses((prev) => prev.filter((e) => e.id !== id));
       handleClose();
     } catch (err) {
