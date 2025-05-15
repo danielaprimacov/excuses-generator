@@ -102,27 +102,28 @@ button {
 }
 
 .help-section {
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
 .help-section p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--color-gray-900);
 }
 
 .help {
   display: inline-flex;
   justify-content: center;
+  margin: 0 0.2rem;
   align-items: center;
   background-color: var(--color-primary-300);
-  color: var(--color-gray-800);
+  color: var(--color-gray-900);
   height: 30px;
   transition: transform 0.4s ease-in-out;
 }
 
 .help:hover {
-  background-color: var(--color-gray-800);
+  background-color: var(--color-gray-900);
   color: var(--color-primary-300);
   transform: scale(1.05);
 }

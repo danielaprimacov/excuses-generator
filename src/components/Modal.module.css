@@ -20,6 +20,10 @@
   width: 100%;
 }
 
+.modal-manage {
+  max-width: 700px;
+}
+
 .modal h1 {
   text-align: center;
 }
@@ -38,6 +42,11 @@ input {
   border-radius: 0.25rem;
   margin-top: 0.5rem;
   color: var(--color-gray-900);
+}
+
+.modal-manage input,
+.modal-manage select {
+  max-width: 650px;
 }
 
 .error {

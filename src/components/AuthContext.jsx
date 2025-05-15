@@ -11,6 +11,7 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => getCurrentUser());
+  const [authModal, setAuthModal] = useState(null);
 
   useEffect(() => {
     const current = getCurrentUser();
@@ -23,6 +24,8 @@ export function AuthProvider({ children }) {
       return res;
     }
     setUser(res.user);
+    // close modal on success
+    setAuthModal(null);
     return { ok: true };
   };
 
@@ -36,8 +39,25 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const openLoginModal = () => setAuthModal("login");
+  const openSignupModal = () => setAuthModal("signup");
+  const closeAuthModal = () => setAuthModal(null);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, signup }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        signup,
+        logout,
+
+        // these are new:
+        authModal,
+        openLoginModal,
+        openSignupModal,
+        closeAuthModal,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -1,7 +1,8 @@
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { AuthContext } from "../components/AuthContext";
 import { fetchCategories, fetchSituations, fetchExcuses } from "../utils/api";
 import classes from "./ExcuseGenerator.module.css";
+import ManageExcuseModal from "./ManageExcuseModal";
 
 function ExcuseGenerator() {
   const [step, setStep] = useState(0);
@@ -10,13 +11,15 @@ function ExcuseGenerator() {
   const [format, setFormat] = useState("");
   const [excuse, setExcuse] = useState(null);
   const [error, setError] = useState("");
+  const [isManageOpen, setIsManageOpen] = useState(false);
+
+  const { user, openLoginModal } = useContext(AuthContext);
 
   const toneOptions = [
     "Dramatic",
     "Realistic",
     "Not Suspicious",
     "Empathy",
-    "LinkedIn Tone",
     "Funny",
   ];
   const formatOptions = ["Slack", "Email", "Text", "SMS", "Phone Call"];
@@ -228,6 +231,23 @@ function ExcuseGenerator() {
           <button className={classes.submitBtn} onClick={resetAll}>
             Start Over
           </button>
+          <div className={classes["help-section"]}>
+            <p>
+              Our excuses are tired they’ve started snoring{" "}
+              <button
+                className={classes.help}
+                onClick={() =>
+                  user ? setIsManageOpen(true) : openLoginModal()
+                }
+              >
+                help us
+              </button>{" "}
+              wake them up!
+            </p>
+          </div>
+          {isManageOpen && (
+            <ManageExcuseModal onClose={() => setIsManageOpen(false)} />
+          )}
         </div>
       )}
 
