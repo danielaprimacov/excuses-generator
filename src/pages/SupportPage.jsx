@@ -42,6 +42,7 @@ function SupportPage() {
       status={status}
       user={user}
       form={form}
+      openLoginModal={openLoginModal}
     />
   );
 }

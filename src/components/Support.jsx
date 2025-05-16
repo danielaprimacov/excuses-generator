@@ -6,6 +6,7 @@ export default function Support({
   status,
   user,
   form,
+  openLoginModal,
 }) {
   return (
     <div className={classes.container}>
