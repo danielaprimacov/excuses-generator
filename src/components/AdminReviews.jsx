@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { fetchReviews } from "../utils/api";
 import { AuthContext } from "./AuthContext";
 
-import classes from "./AdminReview.module.css";
+import classes from "./AdminReviews.module.css";
 
 export default function AdminReviews() {
   const { user, openLoginModal } = useContext(AuthContext);
