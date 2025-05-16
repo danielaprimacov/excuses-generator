@@ -75,3 +75,15 @@ export function updateExcuse(id, payload) {
     body: JSON.stringify(payload),
   });
 }
+
+/**
+ * Submit a new support ticket.
+ *
+ * @param {{ userName: string, subject: string, message: string, date: string }} payload
+ */
+export function createSupportTicket(payload) {
+  return request("/support-tickets", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}

@@ -1,0 +1,103 @@
+.container {
+  padding: 16px;
+  padding-top: 8rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.loginButton {
+  display: block;
+  margin: 0 auto 32px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.loginButton:hover {
+  background-color: #0056b3;
+}
+
+.form {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto 32px;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-input {
+  margin-bottom: 16px;
+}
+
+.form-input label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form-input input,
+.form-input textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-input textarea {
+  background-color: #fff;
+  color: #555;
+}
+
+.submitButton {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.submitButton:hover {
+  background-color: #1e7e34;
+}
+
+/* Success & Error Messages */
+.success {
+  margin-top: 16px;
+  color: #155724;
+  background-color: #d4edda;
+  padding: 8px;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.error {
+  margin-top: 16px;
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 8px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+}

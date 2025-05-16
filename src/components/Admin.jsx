@@ -1,5 +1,11 @@
 import { NavLink } from "react-router-dom";
 
+import add from "../assets/images/add.png";
+import list from "../assets/images/list.png";
+import chart from "../assets/images/chart-histogram.png";
+import review from "../assets/images/review.png";
+import support from "../assets/images/envelope.png";
+import back from "../assets/images/arrow-alt-circle-left.png";
 import logo from "../assets/images/logo.png";
 import classes from "./Admin.module.css";
 
@@ -35,7 +41,8 @@ function Admin() {
                   isActive ? classes.active : undefined
                 }
               >
-                All excuses
+                <img className={classes.icon} src={list} alt="all-excuses" />{" "}
+                <span className={classes.label}>All excuses</span>
               </NavLink>
             </li>
             <li>
@@ -45,7 +52,8 @@ function Admin() {
                   isActive ? classes.active : undefined
                 }
               >
-                Add Excuse
+                <img className={classes.icon} src={add} alt="add-excuse" />{" "}
+                <span className={classes.label}>Add Excuse</span>
               </NavLink>
             </li>
             <li>
@@ -55,21 +63,41 @@ function Admin() {
                   isActive ? classes.active : undefined
                 }
               >
-                Statistics
+                <img className={classes.icon} src={chart} alt="chart-excuses" />
+                <span className={classes.label}>Statistics</span>
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="reviews"
+                to="admin-reviews"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
               >
-                Reviews
+                <img className={classes.icon} src={review} alt="reviews" />
+                <span className={classes.label}>Reviews</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">Go Back</NavLink>
+              <NavLink
+                to="support-tickets"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                <img
+                  className={classes.icon}
+                  src={support}
+                  alt="Support Tickets"
+                />
+                <span className={classes.label}>Support</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/">
+                <img className={classes.icon} src={back} alt="Back Icon" />
+                <span className={classes.label}>Go Back</span>
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -13,14 +13,16 @@
   width: 200px;
 }
 
-.navigation {
-  margin-top: 70px;
-  margin-left: 20px;
-}
-
 .navigation a {
   font-size: 1.2rem;
   color: var(--color-primary-300);
+}
+
+.sidebar-list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
 }
 
 .sidebar-list li {
@@ -62,3 +64,25 @@
   margin-right: auto;
 }
 
+.icon {
+  flex-shrink: 0;
+}
+
+.label {
+  display: none;
+  margin-left: 10px;
+  white-space: nowrap;
+  /* optional fade-in: */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .sidebar-list a {
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.sidebar:hover .label {
+  display: inline-block;
+  opacity: 1;
+}
