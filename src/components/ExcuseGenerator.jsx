@@ -21,6 +21,8 @@ function ExcuseGenerator() {
     "Not Suspicious",
     "Empathy",
     "Funny",
+    "Technical",
+    "Evoking Empathy",
   ];
   const formatOptions = ["Slack", "Email", "Text", "SMS", "Phone Call"];
 

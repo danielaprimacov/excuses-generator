@@ -81,16 +81,36 @@ export default function ManageExcuseModal({ onClose }) {
   return (
     <div className={classes.modalOverlay}>
       <div className={`${classes.modal} ${classes["modal-manage"]}`}>
-        <button onClick={onClose} className={classes.close}>
-          ×
-        </button>
+        <div className={classes["close-btn"]}>
+          <h2></h2>
+          <button onClick={onClose} className={classes.close}>
+            ×
+          </button>
+        </div>
 
         {step === "choose" && (
           <>
             <h2>What would you like to do?</h2>
-            <button onClick={() => setStep("add")}>Add a New Excuse</button>
-            <button onClick={() => setStep("edit")}>Edit an Excuse</button>
-            <button onClick={() => setStep("delete")}>Delete an Excuse</button>
+            <div className={classes.choices}>
+              <button
+                className={classes["add-new"]}
+                onClick={() => setStep("add")}
+              >
+                Add a New Excuse
+              </button>
+              <button
+                className={classes["edit-one"]}
+                onClick={() => setStep("edit")}
+              >
+                Edit an Excuse
+              </button>
+              <button
+                className={classes["delete-one"]}
+                onClick={() => setStep("delete")}
+              >
+                Delete an Excuse
+              </button>
+            </div>
           </>
         )}
 
@@ -160,7 +180,7 @@ export default function ManageExcuseModal({ onClose }) {
                     onChange={onChange}
                     required
                   >
-                    <option value="">– pick one –</option>
+                    <option value="">– choose one –</option>
                     {situations.map((s) => (
                       <option key={s.id} value={s.id}>
                         {s.situationName}
@@ -179,7 +199,7 @@ export default function ManageExcuseModal({ onClose }) {
                     required
                     disabled={!form.selectedSituationId}
                   >
-                    <option value="">– pick one –</option>
+                    <option value="">– choose one –</option>
                     {excuses
                       .filter(
                         (e) =>

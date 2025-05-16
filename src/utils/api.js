@@ -24,6 +24,17 @@ export function fetchExcuses() {
   return request("/excuses");
 }
 
+export function fetchReviews() {
+  return request("/reviews");
+}
+
+export function createReview(payload) {
+  return request("/reviews", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
 // Fetch newest excuses
 export function fetchLatestExcuses({ sort = "id", order = "desc" } = {}) {
   return request(`/excuses?_sort=${sort}&_order=${order}`);

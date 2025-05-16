@@ -1,0 +1,125 @@
+.container {
+  margin-top: 3rem;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.toggleButton {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background-color: var(--color-primary-800);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggleButton:hover {
+  background-color: var(--color-primary-900);
+}
+
+.form {
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-primary-200);
+}
+
+.subheading {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.form-input {
+  margin-bottom: 12px;
+}
+
+.form-input label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.form-input input,
+.form-input select,
+.form-input textarea {
+  margin-top: 4px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form-input textarea {
+  background-color: #fff;
+  color: #555;
+}
+
+.submitButton {
+  padding: 8px 16px;
+  background-color: var(--color-gray-900);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: var(--color-gray-500);
+}
+
+.list {
+  margin-top: 24px;
+}
+
+.reviewCard {
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.userName {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.rating {
+  color: #ffa500;
+  font-size: 14px;
+}
+
+.comment {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.date {
+  font-size: 12px;
+  color: #666;
+}
+
+.noReviews {
+  font-style: italic;
+  color: #555;
+}

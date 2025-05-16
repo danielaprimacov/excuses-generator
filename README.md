@@ -23,7 +23,7 @@
 ![Home Page Screenshot](link-to-screenshot.png)  
 ![Admin Dashboard Screenshot](link-to-screenshot.png)
 
-> Live Demo: [excuse-generator.example.com](https://nopify.netlify.app)
+> Live Demo: [nopify.netlify.app](https://nopify.netlify.app)
 
 </details>
 

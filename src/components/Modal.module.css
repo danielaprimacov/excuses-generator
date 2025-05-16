@@ -96,3 +96,44 @@ input {
 .existing-acc-btn:hover {
   transform: rotate(2deg);
 }
+
+.close-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 600px;
+}
+
+.close {
+  background-color: rgba(255, 19, 19, 0.556);
+}
+
+.choices {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.add-new {
+  background-color: var(--color-primary-400);
+}
+
+.add-new:hover {
+  background-color: var(--color-primary-600);
+}
+
+.edit-one {
+  background-color: rgb(178, 237, 174);
+}
+
+.edit-one:hover {
+  background-color: rgb(154, 235, 149);
+}
+
+.delete-one {
+  background-color: rgb(232, 113, 113);
+}
+
+.delete-one:hover {
+  background-color: rgb(230, 96, 96);
+}

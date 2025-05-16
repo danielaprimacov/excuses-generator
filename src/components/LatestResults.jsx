@@ -101,7 +101,7 @@ function LatestResults() {
 
   return (
     <div className={classes.results}>
-      <p className={classes.heading}>People also generated</p>
+      <p className={classes.heading}>Community-generated</p>
       <div className={classes.slider} ref={sliderRef}>
         {cards.map((c) => (
           <div
