@@ -47,6 +47,7 @@
 .textarea {
   min-height: 80px;
   resize: vertical;
+  background-color: #fff;
 }
 
 .actions {
@@ -69,12 +70,22 @@
 }
 
 .submitButton {
-  background-color: #007bff;
+  background-color: var(--color-primary-700);
   color: #fff;
 }
 
 .cancelButton {
-  background: transparent;
+  background: rgb(244, 97, 97);
   color: #333;
   border: 1px solid #ccc;
+}
+
+.cancelButton,
+.submitButton {
+  transition: transform ease-in 0.5s;
+}
+
+.submitButton:hover,
+.cancelButton:hover {
+  transform: scale(1.05);
 }

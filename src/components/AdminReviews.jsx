@@ -34,7 +34,6 @@ export default function AdminReviews() {
           <tr>
             <th className={classes.headerCell}>Rating</th>
             <th className={classes.headerCell}>User</th>
-            <th className={classes.headerCell}>Excuse ID</th>
             <th className={classes.headerCell}>Comment</th>
           </tr>
         </thead>
@@ -44,7 +43,6 @@ export default function AdminReviews() {
               <tr key={review.id}>
                 <td className={classes.cell}>{review.rating}</td>
                 <td className={classes.cell}>{review.userName}</td>
-                <td className={classes.cell}>{review.excuseId}</td>
                 <td className={classes.cell}>{review.comment}</td>
               </tr>
             ))

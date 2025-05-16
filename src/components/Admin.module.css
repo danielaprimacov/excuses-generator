@@ -13,6 +13,10 @@
   width: 200px;
 }
 
+.navigation {
+  margin-top: 3.5rem;
+}
+
 .navigation a {
   font-size: 1.2rem;
   color: var(--color-primary-300);

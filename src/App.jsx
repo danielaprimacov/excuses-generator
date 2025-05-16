@@ -14,6 +14,7 @@ import AllExcusesPage from "./pages/AllExcusesPage";
 import EditExcusePage from "./pages/EditExcusePage";
 import AdminStatistics from "./components/AdminStatistics";
 import AdminReviews from "./components/AdminReviews";
+import AdminSupport from "./components/AdminSupport";
 import SupportPage from "./pages/SupportPage";
 import AddNewExcuse from "./components/AddNewExcuse";
 import { AuthProvider } from "./components/AuthContext";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "admin-reviews",
         element: <AdminReviews />,
+      },
+      {
+        path: "support-tickets",
+        element: <AdminSupport />,
       },
       {
         path: "edit/:categoryId/:situationId/:excuseId",

@@ -13,3 +13,11 @@
   font-size: 1rem;
   text-align: center;
 }
+
+a {
+  color: var(--color-primary-900);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+}

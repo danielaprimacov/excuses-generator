@@ -87,3 +87,7 @@ export function createSupportTicket(payload) {
     body: JSON.stringify(payload),
   });
 }
+
+export function fetchSupportTickets() {
+  return request("/support-tickets");
+}
