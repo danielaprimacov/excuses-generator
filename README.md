@@ -1,5 +1,6 @@
 # 🚀 Excuse Generator
 
+[![Backend](https://img.shields.io/badge/Backend-link-blue.svg)]https://github.com/danielaprimacov/excuses-generator-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license) [![Issues](https://img.shields.io/github/issues/yourusername/excuse-generator.svg)](https://github.com/danielaprimacov/excuses-generator/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
 > **Generate the perfect excuse for any situation!** Choose a scenario, pick a tone, and get a witty, humorous excuse in seconds.
