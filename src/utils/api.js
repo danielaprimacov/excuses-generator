@@ -63,8 +63,8 @@ export function fetchExcuse(id) {
   return request(`/excuses/${id}`);
 }
 
-export function deleteExcuse(excuseId) {
-  return request(`/excuses/${excuseId}`, {
+export function deleteExcuse(id) {
+  return request(`/excuses/${id}`, {
     method: "DELETE",
   });
 }
