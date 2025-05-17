@@ -20,8 +20,8 @@
 <details>  
 <summary>Click to view screenshots / live demo</summary>
 
-![Home Page Screenshot](link-to-screenshot.png)  
-![Admin Dashboard Screenshot](link-to-screenshot.png)
+![Home Page Screenshot](https://drive.google.com/file/d/1D4589GqPRKMN39An88mD362sTgMcOtk7/view?usp=sharing)  
+![Admin Dashboard Screenshot](https://drive.google.com/file/d/1tHCBF4ZYCFD3eKXp92eaz_XOc8mAskoq/view?usp=sharing)
 
 > Live Demo: [nopify.netlify.app](https://nopify.netlify.app)
 
@@ -47,8 +47,9 @@
 2. **Install dependencies**
 
    ```bash
-     git clone https://github.com/danielaprimacov/excuses-generator.git
-     cd excuses-generator
+     npm install
+      # or
+      yarn install
    ```
 
 3. **Set up environment**
