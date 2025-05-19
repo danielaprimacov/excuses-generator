@@ -3,7 +3,7 @@ import { fetchCategories, fetchExcuses, fetchSituations } from "../utils/api";
 
 import classes from "./Modal.module.css";
 
-const ADMIN_EMAIL = "daniela.primacov@yahoo.com";
+const ADMIN_EMAIL = import.meta.env.ADMIN_EMAIL;
 
 export default function ManageExcuseModal({ onClose }) {
   const [step, setStep] = useState("choose"); // "choose" | "add" | "edit" | "delete"
